@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk4qjioby8e0d"]
+
+[ext_resource type="Script" uid="uid://cn2vd4pvykxi8" path="res://world.gd" id="1_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://bilne00fl8swm" path="res://world_generator.tscn" id="1_fj7yv"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_aqk2v")
+
+[node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
+position = Vector2(0, 45)
