@@ -9,3 +9,5 @@ script = ExtResource("1_aqk2v")
 [node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
 position = Vector2(0, 45)
 grid_size = 64
+max_height = 9
+min_height = 3
