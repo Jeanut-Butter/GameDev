@@ -9,4 +9,4 @@ func _exit_tree():
 func instance_node(node, location):
 	var node_instance = node.instantiate()
 	add_child(node_instance)
-	node_instance = location
+	node_instance.global_position = location

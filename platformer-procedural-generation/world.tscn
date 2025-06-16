@@ -8,5 +8,4 @@ script = ExtResource("1_aqk2v")
 
 [node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
 position = Vector2(0, 45)
-
-[connection signal="instance_node" from="World_generator" to="." method="instance_node"]
+grid_size = 64
