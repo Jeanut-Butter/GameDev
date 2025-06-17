@@ -11,6 +11,7 @@ var current_block_number = 0
 signal instance_node(node, location)
 
 func _ready():
+	print('Generating')
 	max_height *= grid_size
 	min_height *= grid_size
 	# Center horizontally based on block count
