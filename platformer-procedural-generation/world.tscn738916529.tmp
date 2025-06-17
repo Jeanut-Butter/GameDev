@@ -11,9 +11,8 @@ script = ExtResource("1_aqk2v")
 max_blocks = 100
 grid_size = 64
 platform_length = 3
-amplitude = 100
+amplitude = null
 
 [node name="Player" parent="." instance=ExtResource("4_aqk2v")]
-position = Vector2(0, -150)
 
 [connection signal="generation_complete" from="World_generator" to="Player" method="generation_complete"]
