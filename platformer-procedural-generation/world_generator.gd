@@ -36,6 +36,6 @@ func _process(delta):
 		global_position.x += grid_size
 		emit_signal("instance_node", block, global_position)
 		current_block_number += 1
-		print('current number of blocks is ', current_block_number, ' and current y value is ', global_position.y)
+		print('current number of blocks is ', current_block_number, ' and current position is ', global_position)
 	else:
 		queue_free()
