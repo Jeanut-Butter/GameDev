@@ -9,8 +9,12 @@ script = ExtResource("1_aqk2v")
 
 [node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
 position = Vector2(0, 45)
+max_blocks = 100
 grid_size = 64
 max_height = 9
 min_height = 3
+platform_length = 3
 
 [node name="Player" parent="." instance=ExtResource("4_aqk2v")]
+
+[connection signal="generation_complete" from="World_generator" to="Player" method="generation_complete"]

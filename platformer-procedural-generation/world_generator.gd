@@ -5,10 +5,12 @@ extends Marker2D
 @export var grid_size: int
 @export var max_height: int
 @export var min_height: int
+@export var platform_length: int
 
 var current_block_number = 0
 
 signal instance_node(node, location)
+signal generation_complete(value)
 
 func _ready():
 	print('Generating')
@@ -28,15 +30,18 @@ func _process(delta):
 	if current_block_number < max_blocks:
 		var action = round(randf_range(0, 20))
 		
-		if action > 0 and action < 4 and global_position.y >= min_height:
+		if action > 0 and action < 6 and global_position.y >= min_height:
 			global_position.y -= grid_size
 			
-		elif action < 8 and action > 4 and global_position.y <= max_height:
+		elif action < 12 and action > 6 and global_position.y <= max_height:
 			global_position.y += grid_size
 		
-		global_position.x += grid_size
-		emit_signal("instance_node", block, global_position)
-		current_block_number += 1
+		
+		for i in (platform_length):
+			global_position.x += grid_size
+			emit_signal("instance_node", block, global_position)
+			current_block_number += 1
 		print('current number of blocks is ', current_block_number, ' and current position is ', global_position)
 	else:
 		queue_free()
+		emit_signal("generation_complete", true)
