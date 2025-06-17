@@ -17,6 +17,7 @@ func _physics_process(delta):
 	velocity.x = Input.get_axis("walk_left", "walk_right") * speed
 	
 	if is_on_floor():
+		velocity.y = 0
 		jump_count = 0
 	
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
