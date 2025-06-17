@@ -27,3 +27,5 @@ shape = SubResource("RectangleShape2D_7nltm")
 [node name="coyoteTimer" type="Timer" parent="."]
 
 [node name="Grapple" type="RayCast2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
