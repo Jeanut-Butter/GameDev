@@ -248,8 +248,8 @@ speed_scale = 1.6
 [node name="Grapple" type="RayCast2D" parent="."]
 target_position = Vector2(-1, -59)
 
-[node name="Gun" parent="." instance=ExtResource("2_r8wyc")]
-position = Vector2(21, 1)
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, 47, -17, 7, -6, -38, 5, -40, 11, -29, 8, -20, 18, 0, 16, 30, 12, 44, 4, 29, -4, 30)
+
+[node name="Gun" parent="." instance=ExtResource("2_r8wyc")]
+position = Vector2(21, 1)
