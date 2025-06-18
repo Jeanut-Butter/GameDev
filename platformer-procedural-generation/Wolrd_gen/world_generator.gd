@@ -33,11 +33,11 @@ func _process(delta):
 		if action > 0 and action < 6:
 			global_position.y -= grid_size
 			clamp_height()
-			
+
 		elif action < 12 and action > 6:
 			global_position.y += grid_size
 			clamp_height()
-		
+
 		for i in (platform_length):
 			global_position.x += grid_size
 			emit_signal("instance_node", block, global_position)
@@ -46,7 +46,6 @@ func _process(delta):
 	else:
 		queue_free()
 		emit_signal("generation_complete", true)
-
 
 func clamp_height():
 	global_position.y = clamp(global_position.y, min_block_height, max_block_height)
