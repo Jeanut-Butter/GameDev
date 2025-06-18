@@ -25,6 +25,8 @@ func _ready():
 	add_child(grapple)
 	
 func _physics_process(delta):
+	var local_mouse_pos = get_global_mouse_position()
+	
 	if gravity_enabled == true:
 		velocity.y += gravity * delta
 		velocity.x = Input.get_axis("walk_left", "walk_right") * speed  # makes velocity a thing 
@@ -36,6 +38,11 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 			velocity.y = jump_speed
 			jump_count += 1
+			
+		#if (local_mouse_pos.x < 0):
+			#scale.x = -1
+		#else:
+			#scale.x = 1
 
 		grapple.update(delta)  # Call grapple logic
 
