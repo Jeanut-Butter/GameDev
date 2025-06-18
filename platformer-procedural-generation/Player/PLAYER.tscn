@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
-[ext_resource type="Texture2D" uid="uid://c15fhoj0jp1if" path="res://WildRogue.png" id="2_fmh8k"]
+[ext_resource type="Texture2D" uid="uid://cmnkr46s7mgvd" path="res://Player/WildRogue.png" id="2_fmh8k"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no20e"]
