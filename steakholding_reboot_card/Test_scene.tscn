@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://cneu13eio1dnu"]
+
+[ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="1_13wfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a6xy"]
+size = Vector2(2999, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13wfv"]
+size = Vector2(4004, 201.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+custom_minimum_size = Vector2(4000, 200)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -10.0
+offset_right = 199.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.147672, 0.147672, 0.147672, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-3.5, -889)
+shape = SubResource("RectangleShape2D_5a6xy")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_13wfv")]
+position = Vector2(-14, -164)
+
+[node name="Roof" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Roof"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1501.0
+offset_top = -915.0
+offset_right = -1401.0
+offset_bottom = -865.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(30, 1)
+color = Color(0.147672, 0.147672, 0.147672, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(-1, -0.75)
+shape = SubResource("RectangleShape2D_13wfv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-14, -164)
+offset = Vector2(0, -300)
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

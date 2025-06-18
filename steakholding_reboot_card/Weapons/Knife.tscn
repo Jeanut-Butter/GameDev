@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://biosyojxgg0mu"]
+
+[ext_resource type="Texture2D" uid="uid://dafk0q37fnevc" path="res://Player/knife.png" id="1_21utj"]
+
+[node name="Knife" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(-4, 6, 11, 6, 14, 0, -4, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_21utj")
+
+[node name="RayCast2D" type="RayCast2D" parent="RigidBody2D"]
