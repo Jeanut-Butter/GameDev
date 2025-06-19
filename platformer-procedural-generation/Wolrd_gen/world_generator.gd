@@ -4,7 +4,14 @@ extends Marker2D
 @export var max_blocks: int
 @export var grid_size: int
 @export var platform_length: int
+
+@export var break_in_platform_chance: int
+@export var max_break_in_platform_chance: int
+
 @export_range(0, 100000) var amplitude: int = 0
+
+@export var roughness: int
+@export var max_roughness: int
 
 @onready var min_block_height = -grid_size * amplitude
 @onready var max_block_height = grid_size * amplitude
@@ -28,15 +35,23 @@ func _process(delta):
 		if !is_connected("instance_node", Callable(Global.world, "instance_node")):
 			connect("instance_node", Callable(Global.world, "instance_node"))
 	if current_block_number < max_blocks:
-		var action = round(randf_range(0, 20))
+		var action = round(randf_range(0, max_roughness))
 		
-		if action > 0 and action < 6:
+		var chance = round(randf_range(0, max_break_in_platform_chance))
+		
+		var break_size = round(randf_range(2, 4))
+		
+		if action > 0 and action < roughness:
 			global_position.y -= grid_size
 			clamp_height()
 
-		elif action < 12 and action > 6:
+		elif action < roughness * 2 and action > roughness:
 			global_position.y += grid_size
 			clamp_height()
+		
+		if chance < break_in_platform_chance * 2 and chance > break_in_platform_chance:
+			global_position.x += grid_size * break_size
+			print('break')
 
 		for i in (platform_length):
 			global_position.x += grid_size

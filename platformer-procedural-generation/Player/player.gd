@@ -22,6 +22,7 @@ func _ready():
 	#print("Script attached to Gun:", $Gun.get_script())
 	#print("Has shoot():", $Gun.has_method("shoot"))
 	# debug lines 
+	print("player is at: ", self.position)
 	add_child(grapple)
 	
 func _physics_process(delta):
