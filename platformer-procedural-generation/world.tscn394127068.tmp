@@ -10,14 +10,12 @@ script = ExtResource("1_aqk2v")
 [node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
 max_blocks = 100
 grid_size = 64
-platform_length = 4
-break_in_platform_chance = 4
-max_break_in_platform_chance = 10
+platform_length = 3
 amplitude = 100
 roughness = 5
 max_roughness = 20
 
 [node name="Player" parent="." instance=ExtResource("4_aqk2v")]
-speed = 800
+position = Vector2(0, -150)
 
 [connection signal="generation_complete" from="World_generator" to="Player" method="generation_complete"]

@@ -36,7 +36,7 @@ func update(delta):
 	if Input.is_action_pressed("grapple") and grapple_cooldown_timer >= 0.0:  # checks id coolodwn timer is 
 		if not is_grappling:
 			shoot_grapple()
-			
+
 	else:
 		if is_grappling:
 			post_grapple_velocity = player.velocity
