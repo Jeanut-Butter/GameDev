@@ -36,9 +36,9 @@ func _process(delta):
 			connect("instance_node", Callable(Global.world, "instance_node"))
 	if current_block_number < max_blocks:
 		var action = round(randf_range(0, max_roughness))
-		
+
 		var chance = round(randf_range(0, max_break_in_platform_chance))
-		
+
 		var break_size = round(randf_range(2, 4))
 		
 		if action > 0 and action < roughness:
@@ -48,7 +48,7 @@ func _process(delta):
 		elif action < roughness * 2 and action > roughness:
 			global_position.y += grid_size
 			clamp_height()
-		
+
 		if chance < break_in_platform_chance * 2 and chance > break_in_platform_chance:
 			global_position.x += grid_size * break_size
 			print('break')
