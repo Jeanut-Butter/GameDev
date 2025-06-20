@@ -88,12 +88,12 @@ func simulate_grapple(delta):
 
 	player.velocity.y += player.gravity * delta
 
-	var grapple_pull_speed =2000.0
+	var grapple_pull_speed =200.0
 	player.velocity = direction * grapple_pull_speed
 
 	var input_x = Input.get_axis("walk_left", "walk_right")
 	var input_y = Input.get_axis("move_up", "move_down")  # optional
-	var input_force = Vector2(input_x, input_y).normalized() * 300.0
+	var input_force = Vector2(input_x, input_y).normalized() * 0.05
 	player.velocity += input_force * delta
 
 	if distance < 50.0:

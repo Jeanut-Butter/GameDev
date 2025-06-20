@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 # Chanable varriables for player can be alteredoutside of code temproralily  
 
-@export var speed := 8
-@export var jump_speed := -100
-@export var gravity := 600
+@export var speed := 1
+@export var jump_speed := -250
+@export var gravity := 900
 @export var max_jumps = 2
  # instead if checking if player is on ground to jump,
 # simply have a jump count that limits how many times the play can jump  in a rpw 
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	
 	if gravity_enabled == true:
 		velocity.y += gravity * delta
-		velocity.x = Input.get_axis("walk_left", "walk_right") * speed  # makes velocity a thing 
+		velocity.x = Input.get_axis("walk_left", "walk_right") * speed  * 0.3# makes velocity a thing 
 		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
 			gun.shoot()
 		if is_on_floor():
