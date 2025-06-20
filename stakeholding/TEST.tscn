@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwfmsh358f0x8"]
+
+[ext_resource type="PackedScene" uid="uid://dxxfgsxk5ppes" path="res://FLYING (NO SHOOTING).tscn" id="1_7vw07"]
+[ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="2_cd2k1"]
+[ext_resource type="PackedScene" uid="uid://ch1cqpey3dgkh" path="res://CHASE (NO SHOOTING).tscn" id="3_r7qem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd2k1"]
+size = Vector2(966.5, 201)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(545.75, 521.5)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_cd2k1")
+
+[node name="ColorRect" type="ColorRect" parent="RigidBody2D/CollisionShape2D"]
+offset_left = -485.0
+offset_top = -100.0
+offset_right = 490.0
+offset_bottom = 102.0
+
+[node name="Node2D" parent="." instance=ExtResource("1_7vw07")]
+position = Vector2(459, 254)
+
+[node name="Player" parent="." instance=ExtResource("2_cd2k1")]
+position = Vector2(159, 320)
+
+[node name="Node2D2" parent="." instance=ExtResource("3_r7qem")]
+position = Vector2(-78, 109)

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch1cqpey3dgkh"]
+
+[ext_resource type="Script" uid="uid://ll8xdn5gseq8" path="res://CHASE NO SHOOT.gd" id="1_4u0pl"]
+[ext_resource type="Texture2D" uid="uid://un1h5i8m10qj" path="res://Monsters_Creatures_Fantasy/Skeleton/Walk.png" id="1_g371e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4u0pl"]
+size = Vector2(29.5, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6u4m"]
+atlas = ExtResource("1_g371e")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deufm"]
+atlas = ExtResource("1_g371e")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mktpj"]
+atlas = ExtResource("1_g371e")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly2tg"]
+atlas = ExtResource("1_g371e")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fi2ev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6u4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deufm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mktpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly2tg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_4u0pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(369, 224)
+shape = SubResource("RectangleShape2D_4u0pl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(365, 223)
+sprite_frames = SubResource("SpriteFrames_fi2ev")
