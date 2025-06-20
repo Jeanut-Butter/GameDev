@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bvax8rabdkf3e" path="res://Wolrd_gen/Block.png" id="1_im0tn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im0tn"]
-size = Vector2(64, 64)
+size = Vector2(16, 16)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 disable_mode = 2
