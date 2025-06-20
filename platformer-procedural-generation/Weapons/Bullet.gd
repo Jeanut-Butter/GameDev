@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 4000
+@export var speed = 1800
 
 func shoot(direction: float):
 	rotation = direction

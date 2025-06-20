@@ -8,26 +8,24 @@ tile_map_data = PackedByteArray("AAD9/wAAAgAAAAkAAAD+/wAAAgABAAkAAAD//wAAAgACAAk
 tile_set = ExtResource("1_jkdpu")
 metadata/_edit_horizontal_guides_ = [-10.0]
 
-[node name="Rocks" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAP//AgADAAMAAAAIAPb/AgAEAAUAAAA=")
+[node name="hanging vines" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9/wMAAgAAAAIAAAAAAAMAAgACAAIAAAD//wMAAgABAAIAAAABAAMAAgABAAIAAAD+/wMAAgABAAIAABAIAAAAAgABAAIAABAJAAEAAgAAAAIAAAAIAPj/AgAJAAgAACAJAPj/AgAEAAUAACAOAAQAAgAAAAIAAAA=")
 tile_set = ExtResource("1_jkdpu")
 
-[node name="hanging vines" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD9/wMAAgAAAAIAAAAAAAMAAgACAAIAAAD//wMAAgABAAIAAAABAAMAAgABAAIAAAD+/wMAAgABAAIAABAIAAAAAgABAAIAABAJAAEAAgAAAAIAAAAIAPj/AgAJAAgAACA=")
+[node name="Rocks" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAP//AgADAAMAAAAIAPb/AgAEAAUAAAAAAAMAAgAEAAUAACAJAPj/AgAEAAUAACAOAAQAAgADAAMAACAQAAMAAgAEAAUAADAVAP//AgAEAAcAAAAPAAQAAgACAAIAAAANAAMAAgABAAIAAAA=")
 tile_set = ExtResource("1_jkdpu")
 
 [node name="platforms" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAP//AgADAAMAAAAHAAAAAgAIAAQAAAAIAAAAAgAHAAQAAAAJAAAAAgAGAAQAAAA=")
+tile_map_data = PackedByteArray("AAACAP//AgADAAMAAAAHAAAAAgAIAAQAAAAIAAAAAgAHAAQAAAAJAAAAAgAGAAQAAAAKAAAAAgAIAAQAAAAGAAAAAgAGAAQAAAAFAAAAAgAHAAQAAAALAAAAAgAHAAQAAAA=")
 tile_set = ExtResource("1_jkdpu")
 
 [node name="folliage" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAP//AgADAAMAAAAHAP//AgAFAAYAAAAIAP//AgAFAAYAAAAJAP//AgAGAAYAAAAJAPX/AgAJAAcAAAA=")
+tile_map_data = PackedByteArray("AAACAP//AgADAAMAAAAHAP//AgAFAAYAAAAIAP//AgAFAAYAAAAJAP//AgAGAAYAAAAJAPX/AgAJAAcAAAAZAP//AgAJAAcAAAAPAAMAAgAJAAgAACATAP//AgABAAQAAAAMAP//AgAAAAQAAAANAP//AgAJAAcAAAALAAAAAgAGAAUAACAFAAAAAgAFAAUAADA=")
 tile_set = ExtResource("1_jkdpu")
 
 [node name="Trees" type="TileMapLayer" parent="."]
 tile_set = ExtResource("1_jkdpu")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_ecic7")]
 position = Vector2(14, -161)

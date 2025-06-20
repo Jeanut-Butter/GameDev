@@ -33,6 +33,13 @@ shape = SubResource("RectangleShape2D_5a6xy")
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_13wfv")]
 position = Vector2(-14, -164)
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+offset = Vector2(0, -300)
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
 [node name="Roof" type="StaticBody2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Roof"]
@@ -53,11 +60,3 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
 position = Vector2(-1, -0.75)
 shape = SubResource("RectangleShape2D_13wfv")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-14, -164)
-offset = Vector2(0, -300)
-zoom = Vector2(0.3, 0.3)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true

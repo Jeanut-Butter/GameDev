@@ -229,7 +229,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -239,9 +239,8 @@ script = ExtResource("1_vhva7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_y474v")
-animation = &"Idle"
-autoplay = "Idle"
-frame_progress = 0.368187
+animation = &"walk"
+autoplay = "walk"
 speed_scale = 1.6
 
 [node name="coyoteTimer" type="Timer" parent="."]
@@ -256,3 +255,5 @@ position = Vector2(21, 1)
 polygon = PackedVector2Array(-8, 47, -17, 7, -6, -38, 5, -40, 11, -29, 8, -20, 18, 0, 16, 30, 12, 44, 4, 29, -4, 30)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
