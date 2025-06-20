@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgsgnx8gc06ij"]
+
+[ext_resource type="Texture2D" uid="uid://bcfsalh7pxely" path="res://Monsters_Creatures_Fantasy/Goblin/Run.png" id="1_wvflo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj5ni"]
+size = Vector2(69, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is0j1"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwg52"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5nk2"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hshhe"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8gnu"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x53jp"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvge0"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yijy8"]
+atlas = ExtResource("1_wvflo")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cnjt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is0j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwg52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5nk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hshhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8gnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x53jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvge0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yijy8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(259.5, 193)
+shape = SubResource("RectangleShape2D_oj5ni")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(263, 184)
+scale = Vector2(1.98, 1.65333)
+sprite_frames = SubResource("SpriteFrames_0cnjt")
+frame = 1
+frame_progress = 0.5568

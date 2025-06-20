@@ -1,0 +1,89 @@
+[gd_scene load_steps=19 format=3 uid="uid://dxxfgsxk5ppes"]
+
+[ext_resource type="Script" uid="uid://bdwwhmq2or844" path="res://FLYINGNOSHOOT.gd" id="1_3hkbx"]
+[ext_resource type="Texture2D" uid="uid://b1mr0t1ij8ydu" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move1.png" id="2_kyraq"]
+[ext_resource type="Texture2D" uid="uid://xm7o2fjvko88" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move2.png" id="3_av72c"]
+[ext_resource type="Texture2D" uid="uid://n2my2qig5ko6" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move3.png" id="4_pvrl6"]
+[ext_resource type="Texture2D" uid="uid://c02g2ap28ltmn" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move4.png" id="5_6yuit"]
+[ext_resource type="Texture2D" uid="uid://caqi3ndmep66x" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move5.png" id="6_as73v"]
+[ext_resource type="Texture2D" uid="uid://cwysahedl7egr" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move6.png" id="7_kuau4"]
+[ext_resource type="Texture2D" uid="uid://0n2tospxs8j5" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move7.png" id="8_bnuns"]
+[ext_resource type="Texture2D" uid="uid://cxunn0ff2acw0" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move8.png" id="9_paaia"]
+[ext_resource type="Texture2D" uid="uid://vvnx6nkiqjsn" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move9.png" id="10_4d83f"]
+[ext_resource type="Texture2D" uid="uid://dsft5xrd52joe" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move10.png" id="11_8qucv"]
+[ext_resource type="Texture2D" uid="uid://clmmebbmfpfml" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move11.png" id="12_bvwc4"]
+[ext_resource type="Texture2D" uid="uid://dmt3mt53nvka5" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move12.png" id="13_7glp4"]
+[ext_resource type="Texture2D" uid="uid://b64c758r4wbc5" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move13.png" id="14_sg8di"]
+[ext_resource type="Texture2D" uid="uid://dx7jmdmrt002i" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move14.png" id="15_6kmfl"]
+[ext_resource type="Texture2D" uid="uid://spdwa4cdrek8" path="res://[Kimbulworks] Enemy Collections #1 - Bat/Bat/Move/Frames/Bat Move15.png" id="16_0hfix"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqbiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kyraq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_av72c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pvrl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6yuit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_as73v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kuau4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bnuns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_paaia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4d83f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8qucv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bvwc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7glp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sg8di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6kmfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0hfix")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spi4p"]
+size = Vector2(120, 48.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_3hkbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(41.5, -43)
+scale = Vector2(2.0375, 2.075)
+sprite_frames = SubResource("SpriteFrames_rqbiw")
+frame_progress = 0.83687
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(42, -49.75)
+shape = SubResource("RectangleShape2D_spi4p")

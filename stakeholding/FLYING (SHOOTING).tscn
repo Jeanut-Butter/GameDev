@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://1v64dqm7das3"]
+
+[ext_resource type="Texture2D" uid="uid://c81yxkh4dtvay" path="res://Monsters_Creatures_Fantasy/Flying eye/Flight.png" id="1_34m4i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2jqw"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmnda"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7uqh"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfab6"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvmjx"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkl4f"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6cne"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j01w6"]
+atlas = ExtResource("1_34m4i")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcte6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2jqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmnda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7uqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfab6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvmjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkl4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6cne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j01w6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rr5v"]
+size = Vector2(23, 28)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(372, 183)
+sprite_frames = SubResource("SpriteFrames_vcte6")
+frame_progress = 0.8072
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(375.5, 186)
+shape = SubResource("RectangleShape2D_8rr5v")
