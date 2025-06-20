@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 # Chanable varriables for player can be alteredoutside of code temproralily  
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed := 1
 @export var jump_speed := -250
@@ -14,7 +15,7 @@ var gravity_enabled: bool = false
 
 @onready var coyote_timer := $coyoteTimer
 @onready var grapple := preload("res://Player/Grapple.gd").new(self)
-@onready var gun = $Gun
+@onready var gun = $AnimatedSprite2D/Gun
 
 
 func _ready():
@@ -29,25 +30,33 @@ func _ready():
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
 	
-	if gravity_enabled == true:
+	if gravity_enabled:
 		velocity.y += gravity * delta
-		velocity.x = Input.get_axis("walk_left", "walk_right") * speed  * 0.3# makes velocity a thing 
+		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 0.3
+		
+		# Handle shooting
 		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
 			gun.shoot()
+		
+		# Reset jump count when on floor
 		if is_on_floor():
 			jump_count = 0
 		
+		# Jump logic
 		if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 			velocity.y = jump_speed
 			jump_count += 1
-			
-		#if (local_mouse_pos.x < 0):
-			#scale.x = -1
-		#else:
-			#scale.x = 1
 
-		grapple.update(delta)  # Call grapple logic
-
+		if velocity.x == 0:
+			sprite.play("Idle")
+		else:
+			sprite.play("walk")
+			sprite.flip_h = velocity.x < 0
+		
+		# Grapple logic
+		grapple.update(delta)
+		
+		# Move
 		move_and_slide()
 
 func generation_complete(value):

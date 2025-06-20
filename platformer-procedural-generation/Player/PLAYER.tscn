@@ -229,7 +229,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 6.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -243,13 +243,14 @@ animation = &"walk"
 autoplay = "walk"
 speed_scale = 1.6
 
+[node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]
+position = Vector2(7, 0.333333)
+scale = Vector2(0.333333, 0.333333)
+
 [node name="coyoteTimer" type="Timer" parent="."]
 
 [node name="Grapple" type="RayCast2D" parent="."]
 target_position = Vector2(-1, -59)
-
-[node name="Gun" parent="." instance=ExtResource("2_r8wyc")]
-position = Vector2(21, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, 47, -17, 7, -6, -38, 5, -40, 11, -29, 8, -20, 18, 0, 16, 30, 12, 44, 4, 29, -4, 30)
