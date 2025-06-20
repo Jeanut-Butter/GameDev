@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Chanable varriables for player can be alteredoutside of code temproralily  
 
 @export var speed := 8
-@export var jump_speed := -100
+@export var jump_speed := -400
 @export var gravity := 600
 @export var max_jumps = 2
  # instead if checking if player is on ground to jump,
