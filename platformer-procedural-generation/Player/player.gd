@@ -15,7 +15,7 @@ var gravity_enabled: bool = false
 
 @onready var coyote_timer := $coyoteTimer
 @onready var grapple := preload("res://Player/Grapple.gd").new(self)
-@onready var gun = $AnimatedSprite2D/Gun
+@onready var gun = $AnimatedSprite2D/Gun	
 
 
 func _ready():
