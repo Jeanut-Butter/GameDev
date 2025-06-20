@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 # Chanable varriables for player can be alteredoutside of code temproralily  
 
-@export var speed := 1200
-@export var jump_speed := -1600
-@export var gravity := 7000
+@export var speed := 8
+@export var jump_speed := -100
+@export var gravity := 600
 @export var max_jumps = 2
  # instead if checking if player is on ground to jump,
 # simply have a jump count that limits how many times the play can jump  in a rpw 
@@ -22,6 +22,7 @@ func _ready():
 	#print("Script attached to Gun:", $Gun.get_script())
 	#print("Has shoot():", $Gun.has_method("shoot"))
 	# debug lines 
+	gravity_enabled = true
 	print("player is at: ", self.position)
 	add_child(grapple)
 	
