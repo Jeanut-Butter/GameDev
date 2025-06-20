@@ -9,11 +9,11 @@
 script = ExtResource("1_aqk2v")
 
 [node name="seedsaver" parent="." instance=ExtResource("2_aqk2v")]
-seedName = "seed"
+seedName = "jaspersucksballs"
 
 [node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
 max_blocks = 100
-grid_size = 64
+grid_size = 16
 platform_length = 4
 break_in_platform_chance = 4
 max_break_in_platform_chance = 10
