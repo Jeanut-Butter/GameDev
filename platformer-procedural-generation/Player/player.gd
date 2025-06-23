@@ -9,6 +9,9 @@ extends CharacterBody2D
 @export var max_jumps = 2
  # instead if checking if player is on ground to jump,
 # simply have a jump count that limits how many times the play can jump  in a rpw 
+
+@export var inv: Inv
+
 var jump_count := 0
 
 var gravity_enabled: bool = false

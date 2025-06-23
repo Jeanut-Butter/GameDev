@@ -1,1 +1,5 @@
-extends Node2D
+extends Resource
+
+class_name Inv
+
+@export var items: Array[InvItem]

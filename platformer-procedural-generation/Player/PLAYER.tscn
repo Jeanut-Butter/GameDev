@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=36 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://cmnkr46s7mgvd" path="res://Player/WildRogue.png" id="2_fmh8k"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
+[ext_resource type="PackedScene" uid="uid://b2fa4wg2jx0pb" path="res://Player/Inventory/inv_ui.tscn" id="4_33k5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no20e"]
 atlas = ExtResource("2_fmh8k")
@@ -258,3 +259,5 @@ polygon = PackedVector2Array(-8, 47, -17, 7, -6, -38, 5, -40, 11, -29, 8, -20, 1
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="InvUI" parent="." instance=ExtResource("4_33k5l")]
