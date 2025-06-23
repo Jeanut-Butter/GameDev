@@ -261,3 +261,7 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="InvUI" parent="." instance=ExtResource("4_33k5l")]
+offset_left = -146.667
+offset_top = -280.0
+offset_right = 145.333
+offset_bottom = -58.0
