@@ -1,9 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=35 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://cmnkr46s7mgvd" path="res://Player/WildRogue.png" id="2_fmh8k"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
-[ext_resource type="PackedScene" uid="uid://b2fa4wg2jx0pb" path="res://Player/Inventory/inv_ui.tscn" id="4_33k5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no20e"]
 atlas = ExtResource("2_fmh8k")
@@ -234,34 +233,30 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_vhva7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_y474v")
 animation = &"walk"
 autoplay = "walk"
 speed_scale = 1.6
 
 [node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]
-position = Vector2(7, 0.333333)
-scale = Vector2(0.333333, 0.333333)
+visible = false
+position = Vector2(6, 0)
+scale = Vector2(0.25, 0.25)
 
-[node name="coyoteTimer" type="Timer" parent="."]
+[node name="coyoteTimer" type="Timer" parent="AnimatedSprite2D"]
 
-[node name="Grapple" type="RayCast2D" parent="."]
+[node name="Grapple" type="RayCast2D" parent="AnimatedSprite2D"]
 target_position = Vector2(-1, -59)
+collide_with_areas = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-8, 47, -17, 7, -6, -38, 5, -40, 11, -29, 8, -20, 18, 0, 16, 30, 12, 44, 4, 29, -4, 30)
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+scale = Vector2(0.333333, 0.333333)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="InvUI" parent="." instance=ExtResource("4_33k5l")]
-offset_left = -146.667
-offset_top = -280.0
-offset_right = 145.333
-offset_bottom = -58.0
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-8, 30, -6, -6, -4, -14, -4, -26, -2, -28, 4, -28, 6, -24, 6, -18, 4, -14, 8, -4, 8, 18, 8, 28, 0, 14)
