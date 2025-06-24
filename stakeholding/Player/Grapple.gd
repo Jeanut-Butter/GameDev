@@ -76,9 +76,11 @@ func shoot_grapple():
 	ray.force_raycast_update()
 
 	if ray.is_colliding():
-		grapple_point = ray.get_collision_point()
-		is_grappling = true
-		grapple_time = 0.0
+		var collider = ray.get_collider()
+		if collider and collider.is_in_group("Grapplable"):
+			grapple_point = ray.get_collision_point()
+			is_grappling = true
+			grapple_time = 0.0
 
 
 
