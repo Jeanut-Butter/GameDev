@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Platformer procedural generation"
-run/main_scene="uid://b1miqrh1oxqlg"
+run/main_scene="uid://cirp0ognt0d8x"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,7 +28,7 @@ window/size/window_height_override=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gloot/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
