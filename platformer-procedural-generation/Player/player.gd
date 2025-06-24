@@ -13,7 +13,7 @@ var jump_count := 0
 
 var gravity_enabled: bool = false
 
-@onready var coyote_timer := $coyoteTimer
+@onready var coyote_timer := $AnimatedSprite2D/coyoteTimer
 @onready var grapple := preload("res://Player/Grapple.gd").new(self)
 @onready var gun = $AnimatedSprite2D/Gun	
 

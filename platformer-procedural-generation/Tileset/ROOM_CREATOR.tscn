@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=4 uid="uid://cirp0ognt0d8x"]
+
+[ext_resource type="PackedScene" uid="uid://bwihkl3ak0mbl" path="res://Tileset/tilemap.tscn" id="2_amp6q"]
+[ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="2_ecic7"]
+
+[node name="Tutorial level" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Player" parent="CanvasModulate" instance=ExtResource("2_ecic7")]
+position = Vector2(14, -161)
+speed = 800
+
+[node name="Tilemap" parent="CanvasModulate" instance=ExtResource("2_amp6q")]
+tile_map_data = PackedByteArray("AAD///f/AgAFAAkAAAAAAPf/AgAAAAkAAAABAPf/AgAAAAkAAAACAPf/AgAAAAkAAAADAPf/AgAAAAkAAAAEAPf/AgAAAAkAAAAFAPf/AgAAAAkAAAAGAPf/AgAAAAkAAAAHAPf/AgAAAAkAAAAIAPf/AgACAAoAAAAJAPf/AgADAAoAAAAKAPf/AgAEAAkAAAALAPf/AgAFAAkAAAAMAPf/AgAFAAkAAAANAPf/AgAIAAoAAAAOAPf/AgAJAAoAAAA=")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="CanvasModulate"]
+position = Vector2(93, -267)
+gravity_scale = 0.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasModulate/RigidBody2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasModulate/RigidBody2D"]
+polygon = PackedVector2Array(-1, 0, 0, 41, 39, 41, 40, -1)

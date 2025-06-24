@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var speed = 1800
+@export var speed = 2400
 
-func shoot(direction: float):
+func shoot(direction: float):      # GAMEFEFU EAVEAAEVOJU
 	rotation = direction
 
 func _physics_process(delta):
