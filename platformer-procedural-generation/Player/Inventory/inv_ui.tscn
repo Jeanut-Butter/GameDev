@@ -7,14 +7,14 @@
 [node name="InvUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 292.0
-offset_bottom = 222.0
+offset_right = 161.0
+offset_bottom = 119.0
 script = ExtResource("1_fgb8e")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 292.0
-offset_bottom = 222.0
+offset_right = 161.0
+offset_bottom = 119.0
 texture = ExtResource("2_oeb17")
 patch_margin_left = 10
 patch_margin_top = 10

@@ -27,6 +27,7 @@ func _ready():
 	#print("Has shoot():", $Gun.has_method("shoot"))
 	# debug lines 
 	gravity_enabled = true
+	global_position.x = self.position.x
 	print("player is at: ", self.position)
 	add_child(grapple)
 	
