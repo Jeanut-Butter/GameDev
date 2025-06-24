@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=37 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://cmnkr46s7mgvd" path="res://Player/WildRogue.png" id="2_fmh8k"]
@@ -232,6 +232,16 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_ecic7"]
+offsets = PackedFloat32Array(0, 0.746154)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fmh8k"]
+gradient = SubResource("Gradient_ecic7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vhva7")
 
@@ -260,3 +270,10 @@ position_smoothing_enabled = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(0.5, 0.5)
 polygon = PackedVector2Array(-8, 30, -6, -6, -4, -14, -4, -26, -2, -28, 4, -28, 6, -24, 6, -18, 4, -14, 8, -4, 8, 18, 8, 28, 0, 14)
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(3, 3)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.61
+texture = SubResource("GradientTexture2D_fmh8k")
