@@ -7,6 +7,12 @@ extends CharacterBody2D
 @export var jump_speed := -250
 @export var gravity := 900
 @export var max_jumps = 2
+
+@export var Pistol: = false
+@export var knife: = false
+@export var dash: = false
+@export var grapple_abblity = false
+@export var quick_draw: = false
  # instead if checking if player is on ground to jump,
 # simply have a jump count that limits how many times the play can jump  in a rpw 
 
