@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Chanable varriables for player can be alteredoutside of code temproralily  
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var speed := 1
+@export var speed := 20
 @export var jump_speed := -250
 @export var gravity := 900
 @export var max_jumps = 2
@@ -35,7 +35,7 @@ func _physics_process(delta):
 	
 	if gravity_enabled:
 		velocity.y += gravity * delta
-		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 0.3
+		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
 		
 		# Handle shooting
 		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):

@@ -23,7 +23,6 @@ roughness = 5
 max_roughness = 20
 
 [node name="Player" parent="." instance=ExtResource("4_aqk2v")]
-speed = 800
 inv = ExtResource("5_036b0")
 
 [connection signal="generation_complete" from="World_generator" to="Player" method="generation_complete"]

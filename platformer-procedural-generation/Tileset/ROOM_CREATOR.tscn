@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=4 uid="uid://cirp0ognt0d8x"]
+[gd_scene load_steps=5 format=4 uid="uid://cirp0ognt0d8x"]
 
 [ext_resource type="PackedScene" uid="uid://bwihkl3ak0mbl" path="res://Tileset/tilemap.tscn" id="2_amp6q"]
 [ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="2_ecic7"]
+
+[sub_resource type="Gradient" id="Gradient_ecic7"]
+offsets = PackedFloat32Array(0, 0.746154)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_amp6q"]
+gradient = SubResource("Gradient_ecic7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
 
 [node name="Tutorial level" type="Node2D"]
 
@@ -10,4 +20,54 @@ tile_map_data = PackedByteArray("AAD///f/AgAFAAkAAAAAAPf/AgAAAAkAAAABAPf/AgAAAAk
 
 [node name="Player" parent="." instance=ExtResource("2_ecic7")]
 position = Vector2(14, -161)
-speed = 800
+
+[node name="Light" type="PointLight2D" parent="Player"]
+position = Vector2(0, -9)
+scale = Vector2(3, 3)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.61
+texture = SubResource("GradientTexture2D_amp6q")
+
+[node name="Nightime" type="DirectionalLight2D" parent="."]
+energy = 0.73
+blend_mode = 1
+
+[node name="Tree_lights" type="Node2D" parent="."]
+position = Vector2(14, -161)
+
+[node name="Light" type="PointLight2D" parent="Tree_lights"]
+position = Vector2(885, -23)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.83
+texture = SubResource("GradientTexture2D_amp6q")
+
+[node name="Light2" type="PointLight2D" parent="Tree_lights"]
+position = Vector2(826, -31)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.83
+texture = SubResource("GradientTexture2D_amp6q")
+
+[node name="Light3" type="PointLight2D" parent="Tree_lights"]
+position = Vector2(844, -7)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.83
+texture = SubResource("GradientTexture2D_amp6q")
+
+[node name="Light4" type="PointLight2D" parent="Tree_lights"]
+position = Vector2(862, -36)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.83
+texture = SubResource("GradientTexture2D_amp6q")
+
+[node name="Light5" type="PointLight2D" parent="Tree_lights"]
+position = Vector2(877, -39)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.83
+texture = SubResource("GradientTexture2D_amp6q")
+
+[node name="Light6" type="PointLight2D" parent="Tree_lights"]
+position = Vector2(860, -40)
+scale = Vector2(2, 2)
+color = Color(1, 0.886275, 0.686275, 1)
+energy = 0.83
+texture = SubResource("GradientTexture2D_amp6q")
