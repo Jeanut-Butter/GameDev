@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Chanable varriables for player can be alteredoutside of code temproralily  
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var speed := 20
+@export var speed := 18
 @export var jump_speed := -250
 @export var gravity := 900
 @export var max_jumps = 2

@@ -242,6 +242,7 @@ autoplay = "walk"
 speed_scale = 1.6
 
 [node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]
+visible = false
 position = Vector2(6, 0)
 scale = Vector2(0.25, 0.25)
 
