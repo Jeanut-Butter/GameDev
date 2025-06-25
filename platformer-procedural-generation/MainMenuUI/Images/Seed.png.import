@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v1p855idqo4j"
-path="res://.godot/imported/inventory-background.png-eb7d2cff7f65565d8a14ecca1437b406.ctex"
+uid="uid://dbvqb1j4065qg"
+path="res://.godot/imported/Seed.png-07399af214658d350b737bcd33689df4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Inventory/inventory-background.png"
-dest_files=["res://.godot/imported/inventory-background.png-eb7d2cff7f65565d8a14ecca1437b406.ctex"]
+source_file="res://MainMenuUI/Images/Seed.png"
+dest_files=["res://.godot/imported/Seed.png-07399af214658d350b737bcd33689df4.ctex"]
 
 [params]
 
