@@ -4,7 +4,7 @@
 
 [sub_resource type="TileSet" id="TileSet_bqaev"]
 
-[node name="Tilemap" type="TileMapLayer"]
+[node name="Tilemap" type="TileMapLayer" groups=["walls"]]
 tile_set = ExtResource("1_bqaev")
 
 [node name="TileMap" type="TileMap" parent="."]

@@ -41,36 +41,38 @@ func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
 	
 	if gravity_enabled:
+		# Gravity and movement
 		velocity.y += gravity * delta
 		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
-		
-		# Handle shooting
+
 		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
 			gun.shoot()
-		
-		# Reset jump count when on floor
+
 		if is_on_floor():
 			jump_count = 0
-		
-		# Jump logic
+
 		if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 			velocity.y = jump_speed
 			jump_count += 1
 
-		if velocity.x == 0:
-			sprite.play("Idle")
+		var anim_to_play = "Idle"
+		if abs(velocity.x) > 0.1:
+			if Pistol or knife:
+				anim_to_play = "walk_arm_extended"
+			else:
+				anim_to_play = "Walk_unarmed"
 
-		if velocity.x >= 0 and Pistol == true or knife == true:
-			sprite.play("walk_arm_extended")
-			sprite.flip_h = velocity.x < 0 
-		else:
-			sprite.play("Walk_unarmed")
-			sprite.flip_h = velocity.x < 0		
+		if sprite.animation != anim_to_play:
+			sprite.play(anim_to_play)
+
+		sprite.flip_h = velocity.x < 0
+		
 		# Grapple logic
 		grapple.update(delta)
-		
+
 		# Move
 		move_and_slide()
+
 
 func generation_complete(value):
 	gravity_enabled = true

@@ -30,6 +30,10 @@ window/size/window_height_override=720
 
 enabled=PackedStringArray()
 
+[global_group]
+
+walls=""
+
 [input]
 
 restart={
