@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cwu2xqywwcok6" path="res://Player/Inventory/inv_ui_slot.tscn" id="3_00ghv"]
 
 [node name="InvUI" type="Control"]
+light_mask = 524288
+visibility_layer = 524288
 layout_mode = 3
 anchors_preset = 0
 offset_right = 161.0
