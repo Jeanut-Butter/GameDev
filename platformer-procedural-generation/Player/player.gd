@@ -59,10 +59,13 @@ func _physics_process(delta):
 
 		if velocity.x == 0:
 			sprite.play("Idle")
+
+		if velocity.x >= 0 and Pistol == true or knife == true:
+			sprite.play("walk_arm_extended")
+			sprite.flip_h = velocity.x < 0 
 		else:
-			sprite.play("walk")
-			sprite.flip_h = velocity.x < 0
-		
+			sprite.play("Walk_unarmed")
+			sprite.flip_h = velocity.x < 0		
 		# Grapple logic
 		grapple.update(delta)
 		
