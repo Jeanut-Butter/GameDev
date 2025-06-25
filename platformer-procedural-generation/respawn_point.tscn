@@ -103,7 +103,7 @@ color_ramp = SubResource("Gradient_nv20u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ymmhv")
 autoplay = "default"
-frame_progress = 0.444268
+frame_progress = 0.0996964
 
 [node name="Light" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
