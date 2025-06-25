@@ -1,11 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=47 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
-[ext_resource type="Resource" uid="uid://oxiltlp52smp" path="res://Player/Inventory/playersInventory.tres" id="2_1gq8m"]
 [ext_resource type="Texture2D" uid="uid://cmnkr46s7mgvd" path="res://Player/WildRogue.png" id="2_fmh8k"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
 [ext_resource type="Texture2D" uid="uid://bxq4ywjjk1y2g" path="res://Player/BASE_PLAYER_SPRITESHEET.png" id="3_33k5l"]
-[ext_resource type="PackedScene" uid="uid://b2fa4wg2jx0pb" path="res://Player/Inventory/inv_ui.tscn" id="5_clp5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no20e"]
 atlas = ExtResource("2_fmh8k")
@@ -315,7 +313,6 @@ fill_to = Vector2(1, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["Player or such"]]
 script = ExtResource("1_vhva7")
-inv = ExtResource("2_1gq8m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y474v")
@@ -349,9 +346,3 @@ scale = Vector2(3, 3)
 color = Color(1, 0.886275, 0.686275, 1)
 energy = 0.61
 texture = SubResource("GradientTexture2D_fmh8k")
-
-[node name="InvUI" parent="." instance=ExtResource("5_clp5o")]
-offset_left = -80.0
-offset_top = -151.0
-offset_right = 81.0
-offset_bottom = -32.0
