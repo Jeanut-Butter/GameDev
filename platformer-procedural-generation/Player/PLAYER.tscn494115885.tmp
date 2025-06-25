@@ -1,9 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=36 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://cmnkr46s7mgvd" path="res://Player/WildRogue.png" id="2_fmh8k"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
-[ext_resource type="Texture2D" uid="uid://bxq4ywjjk1y2g" path="res://Player/BASE_PLAYER_SPRITESHEET.png" id="3_33k5l"]
+[ext_resource type="PackedScene" uid="uid://b2fa4wg2jx0pb" path="res://Player/Inventory/inv_ui.tscn" id="4_33k5l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no20e"]
 atlas = ExtResource("2_fmh8k")
@@ -53,6 +53,10 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_fmh8k")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4qo6"]
+atlas = ExtResource("2_fmh8k")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8ecs"]
 atlas = ExtResource("2_fmh8k")
 region = Rect2(96, 0, 32, 32)
@@ -80,46 +84,6 @@ region = Rect2(256, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fth8v"]
 atlas = ExtResource("2_fmh8k")
 region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mmdir"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sow3f"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3gmv3"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0xmr"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qctof"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jdek"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(160, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptmhy"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(192, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lbhq"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(224, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7dc0"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(256, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnqku"]
-atlas = ExtResource("3_33k5l")
-region = Rect2(288, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gq8m"]
 atlas = ExtResource("2_fmh8k")
@@ -206,6 +170,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_y474v")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f4qo6")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g8ecs")
 }, {
 "duration": 1.0,
@@ -229,41 +196,6 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mmdir")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sow3f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3gmv3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0xmr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qctof")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jdek")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ptmhy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1lbhq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b7dc0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pnqku")
-}],
-"loop": true,
-"name": &"Walk_unarmed",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -297,52 +229,39 @@ animations = [{
 "texture": SubResource("AtlasTexture_0jsj2")
 }],
 "loop": true,
-"name": &"walk_arm_extended",
+"name": &"walk",
 "speed": 6.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_ecic7"]
-offsets = PackedFloat32Array(0, 0.746154)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fmh8k"]
-gradient = SubResource("Gradient_ecic7")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
-
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_vhva7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_y474v")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"walk"
+autoplay = "walk"
 speed_scale = 1.6
 
 [node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]
-visible = false
-position = Vector2(6, 0)
-scale = Vector2(0.25, 0.25)
-
-[node name="coyoteTimer" type="Timer" parent="AnimatedSprite2D"]
-
-[node name="Grapple" type="RayCast2D" parent="AnimatedSprite2D"]
-target_position = Vector2(-1, -59)
-collide_with_areas = true
-
-[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+position = Vector2(7, 0.333333)
 scale = Vector2(0.333333, 0.333333)
+
+[node name="coyoteTimer" type="Timer" parent="."]
+
+[node name="Grapple" type="RayCast2D" parent="."]
+target_position = Vector2(-1, -59)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, 47, -17, 7, -6, -38, 5, -40, 11, -29, 8, -20, 18, 0, 16, 30, 12, 44, 4, 29, -4, 30)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(0.5, 0.5)
-polygon = PackedVector2Array(-8, 30, -6, -6, -4, -14, -4, -26, -2, -28, 4, -28, 6, -24, 6, -18, 4, -14, 8, -4, 8, 18, 8, 28, 0, 14)
-
-[node name="Light" type="PointLight2D" parent="."]
-position = Vector2(0, -9)
-scale = Vector2(3, 3)
-color = Color(1, 0.886275, 0.686275, 1)
-energy = 0.61
-texture = SubResource("GradientTexture2D_fmh8k")
+[node name="InvUI" parent="." instance=ExtResource("4_33k5l")]
+offset_left = -146.667
+offset_top = -280.0
+offset_right = 145.333
+offset_bottom = -58.0

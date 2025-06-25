@@ -22,7 +22,7 @@ signal instance_node(node, location)
 signal generation_complete(value)
 
 func _ready():
-	print('Generating')
+	#emit_signal("instance_node", block, global_position)
 	# Center horizontally based on block count
 	var total_width = max_blocks * grid_size
 	position.x = (get_viewport_rect().size.x - total_width) / 2
@@ -51,13 +51,14 @@ func _process(delta):
 
 		if chance < break_in_platform_chance * 2 and chance > break_in_platform_chance:
 			global_position.x += grid_size * break_size
-			print('break')
+		
+		elif chance > 0 and chance < break_in_platform_chance/2:
+			global_position.x += grid_size * break_size * 2
 
 		for i in (platform_length):
 			global_position.x += grid_size
 			emit_signal("instance_node", block, global_position)
 			current_block_number += 1
-		print('current number of blocks is ', current_block_number, ' and current position is ', global_position)
 	else:
 		queue_free()
 		emit_signal("generation_complete", true)
