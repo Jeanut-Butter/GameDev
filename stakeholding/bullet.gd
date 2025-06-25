@@ -1,13 +1,14 @@
-# Bullet.gd
-extends RigidBody2D
+extends CharacterBody2D
 
-var velocity: Vector2 = Vector2.ZERO
+@export var speed = 1800
+var direction = Vector2.ZERO
+
+func shoot(dir: Vector2):
+	direction = dir.normalized()
+
+func _physics_process(delta):
+	position += direction * speed * delta
 
 func _ready():
-	# Apply velocity when bullet spawns
-	linear_velocity = velocity
-
-func _process(delta):
-	# If off-screen, remove bullet
-	if not get_viewport_rect().has_point(global_position):
-		queue_free()
+	await get_tree().create_timer(3.0).timeout
+	queue_free()

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://rkf04dsegyvf" path="res://Monsters_Creatures_Fantasy/Mushroom/Run.png" id="2_j0303"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6yx5"]
-size = Vector2(10.2657, 25.9403)
+size = Vector2(32.3178, 49.2866)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_do5fx"]
 atlas = ExtResource("2_j0303")
@@ -73,17 +73,17 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(532, 309)
+position = Vector2(35, 19)
 scale = Vector2(2.63013, 1.542)
 up_direction = Vector2(0, 1)
 script = ExtResource("1_j0303")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-2.85155, 3.89105)
+position = Vector2(-13.8776, -7.78207)
 shape = SubResource("RectangleShape2D_g6yx5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(-3.42188, -2.59403)
-scale = Vector2(0.551898, 0.772265)
+position = Vector2(-13.3073, -16.8612)
+scale = Vector2(1.27463, 1.41078)
 sprite_frames = SubResource("SpriteFrames_uncal")
-frame_progress = 0.0549354
+frame_progress = 0.529579

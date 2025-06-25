@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwfmsh358f0x8"]
+[gd_scene load_steps=7 format=3 uid="uid://bwfmsh358f0x8"]
 
 [ext_resource type="PackedScene" uid="uid://dxxfgsxk5ppes" path="res://FLYING (NO SHOOTING).tscn" id="1_7vw07"]
 [ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="2_cd2k1"]
 [ext_resource type="PackedScene" uid="uid://ch1cqpey3dgkh" path="res://CHASE (NO SHOOTING).tscn" id="3_r7qem"]
+[ext_resource type="PackedScene" uid="uid://cv2qde16hi6cc" path="res://NORMAL ENEMY (NO SHOOTING(.tscn" id="4_si16d"]
+[ext_resource type="PackedScene" uid="uid://dgsgnx8gc06ij" path="res://NORMAL ENEMY (SHOOTING).tscn" id="5_sfssh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cd2k1"]
 size = Vector2(966.5, 201)
@@ -11,6 +13,7 @@ size = Vector2(966.5, 201)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(545.75, 521.5)
+mass = 1000.0
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -21,12 +24,19 @@ offset_left = -485.0
 offset_top = -100.0
 offset_right = 490.0
 offset_bottom = 102.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" parent="." instance=ExtResource("1_7vw07")]
-position = Vector2(459, 254)
+position = Vector2(531, 248)
 
 [node name="Player" parent="." instance=ExtResource("2_cd2k1")]
-position = Vector2(159, 320)
+position = Vector2(339, 320)
 
 [node name="Node2D2" parent="." instance=ExtResource("3_r7qem")]
-position = Vector2(446, 366)
+position = Vector2(515, 352)
+
+[node name="Node2D3" parent="." instance=ExtResource("4_si16d")]
+position = Vector2(778, 339)
+
+[node name="Node2D4" parent="." instance=ExtResource("5_sfssh")]
+position = Vector2(175, 315)
