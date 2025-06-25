@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=5 format=3 uid="uid://oxiltlp52smp"]
+[gd_resource type="Resource" script_class="Inv" load_steps=6 format=3 uid="uid://oxiltlp52smp"]
 
 [ext_resource type="Script" uid="uid://b5lm7qc64h8o7" path="res://Player/Inventory/inventory_item.gd" id="1_bstj7"]
-[ext_resource type="Resource" path="res://Player/Inventory/items/pistol.tres" id="2_3gidd"]
+[ext_resource type="Resource" uid="uid://c0kmnpeir1h77" path="res://Player/Inventory/items/pistol.tres" id="2_3gidd"]
+[ext_resource type="Resource" uid="uid://gaevqxsqwyir" path="res://Player/Inventory/items/new_resource.tres" id="3_3gidd"]
 [ext_resource type="Resource" uid="uid://bf7ic8tf7eafc" path="res://Player/Inventory/items/knife.tres" id="3_6as2m"]
 [ext_resource type="Script" uid="uid://cw616x746qlpf" path="res://Player/Inventory/inventory.gd" id="4_44ldm"]
 
 [resource]
 script = ExtResource("4_44ldm")
-items = Array[ExtResource("1_bstj7")]([ExtResource("2_3gidd"), null, null, null, null, ExtResource("3_6as2m"), null, null, null, null, null, null])
+items = Array[ExtResource("1_bstj7")]([ExtResource("2_3gidd"), ExtResource("3_3gidd"), null, null, ExtResource("2_3gidd"), ExtResource("3_6as2m"), null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://cw616x746qlpf"

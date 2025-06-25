@@ -33,6 +33,7 @@ enabled=PackedStringArray()
 [global_group]
 
 walls=""
+player="Joel_Connor_Smith"
 
 [input]
 
