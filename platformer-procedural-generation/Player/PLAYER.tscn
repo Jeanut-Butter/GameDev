@@ -311,8 +311,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["Player or such"]]
+[node name="Player" type="CharacterBody2D" groups=["Player or such", "player"]]
+light_mask = 2
 script = ExtResource("1_vhva7")
+Pistol = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y474v")
@@ -328,7 +330,7 @@ scale = Vector2(0.25, 0.25)
 [node name="coyoteTimer" type="Timer" parent="AnimatedSprite2D"]
 
 [node name="Grapple" type="RayCast2D" parent="AnimatedSprite2D"]
-target_position = Vector2(-1, -59)
+target_position = Vector2(0, -39)
 collide_with_areas = true
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
@@ -344,5 +346,5 @@ polygon = PackedVector2Array(-8, 30, -6, -6, -4, -14, -4, -26, -2, -28, 4, -28, 
 position = Vector2(0, -9)
 scale = Vector2(3, 3)
 color = Color(1, 0.886275, 0.686275, 1)
-energy = 0.61
+energy = 0.65
 texture = SubResource("GradientTexture2D_fmh8k")

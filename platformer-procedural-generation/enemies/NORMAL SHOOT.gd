@@ -4,10 +4,10 @@ extends CharacterBody2D
 @export var gravity: float = 800.0
 @export var patrol_distance: float = 200.0
 @export var bullet_scene: PackedScene
-@export var shoot_interval: float = 3.0
+@export var shoot_interval: float = 2.0
 
 var direction: int = 1 
-var start_position: Vector2 
+var start_position: Vector2
 
 func _ready():
 	start_position = global_position
@@ -37,7 +37,7 @@ func shoot():
 		print("bullet_scene is null!")
 		return
 
-	var players = get_tree().get_nodes_in_group("Player")
+	var players = get_tree().get_nodes_in_group("player")
 	if players.size() == 0:
 		print("No player found")
 		return

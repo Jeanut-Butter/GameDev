@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dgsgnx8gc06ij"]
 
-[ext_resource type="Script" uid="uid://bui6cqq4n3gc6" path="res://enemies/NORMAL SHOOT.gd" id="1_oj5ni"]
-[ext_resource type="Texture2D" uid="uid://ddvkb6kd2ptg1" path="res://enemies/sprite_sheets/Run.png" id="1_wvflo"]
-[ext_resource type="PackedScene" uid="uid://di3pdbdvm2v12" path="res://Weapons/Player_Bullet.tscn" id="2_is0j1"]
+[ext_resource type="Script" uid="uid://dkstcs0exqkx6" path="res://enemies/NORMAL SHOOT.gd" id="1_oj5ni"]
+[ext_resource type="Texture2D" uid="uid://dhuws38ann528" path="res://enemies/sprite_sheets/golbin/Run.png" id="1_wvflo"]
+[ext_resource type="PackedScene" uid="uid://bmu8r53qgw4fd" path="res://enemies/NORMAL BULLET.tscn" id="2_eba5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj5ni"]
 size = Vector2(69, 68)
@@ -73,7 +73,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_oj5ni")
-bullet_scene = ExtResource("2_is0j1")
+bullet_scene = ExtResource("2_eba5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(28, 21.9998)
