@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cwu2xqywwcok6" path="res://Player/Inventory/inv_ui_slot.tscn" id="3_00ghv"]
 
 [node name="InvUI" type="Control"]
-light_mask = 524288
-visibility_layer = 524288
+light_mask = 2
+visibility_layer = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 161.0
@@ -14,6 +14,9 @@ offset_bottom = 119.0
 script = ExtResource("1_fgb8e")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.362829, 0.362829, 0.362829, 0.45098)
+light_mask = 2
+visibility_layer = 2
 layout_mode = 0
 offset_right = 161.0
 offset_bottom = 119.0
@@ -24,6 +27,8 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+light_mask = 2
+visibility_layer = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

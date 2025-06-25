@@ -1,8 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://dprlinv8gujgw"]
+[gd_scene load_steps=15 format=3 uid="uid://dprlinv8gujgw"]
+
+[ext_resource type="Texture2D" uid="uid://cgunbnofh4mb4" path="res://respawnpoint/tileset.png" id="1_b3bci"]
 
 [sub_resource type="Gradient" id="Gradient_nv20u"]
 offsets = PackedFloat32Array(0, 0.891473)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ubr"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(0, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k3yg"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(16, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b60bl"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(32, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuvh4"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(48, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bqln"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(64, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl0ag"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(80, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f255"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(96, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftic0"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(112, 160, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymmhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ubr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k3yg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b60bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuvh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bqln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl0ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f255")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftic0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_ecic7"]
 offsets = PackedFloat32Array(0, 0.746154)
@@ -19,32 +85,10 @@ size = Vector2(204, 113)
 
 [node name="Respawn point" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 3.0
-offset_top = -3.0
-offset_right = 5.0
-offset_bottom = 5.0
-rotation = 0.839129
-color = Color(0.396078, 0.145098, 0, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-offset_right = 2.0
-offset_bottom = 8.0
-rotation = -1.16467
-color = Color(0.395949, 0.145473, 2.40654e-07, 1)
-
-[node name="BASE" type="ColorRect" parent="."]
-offset_left = 8.0
-offset_top = 1.0
-offset_right = 10.0
-offset_bottom = 12.0
-rotation = 1.52729
-color = Color(0.241156, 0.241156, 0.241156, 1)
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(2, -1)
-amount = 150
-lifetime = 0.2
+position = Vector2(0, 3)
+amount = 50
+lifetime = 2.0
 speed_scale = 0.08
 randomness = 1.0
 lifetime_randomness = 0.2
@@ -52,14 +96,19 @@ emission_shape = 1
 emission_sphere_radius = 3.0
 gravity = Vector2(0, -980)
 scale_amount_min = 0.6
-color = Color(1, 0.788235, 0.298039, 0.607843)
+scale_amount_max = 2.0
+color = Color(0.190762, 0.190762, 0.190762, 1)
 color_ramp = SubResource("Gradient_nv20u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ymmhv")
+autoplay = "default"
+frame_progress = 0.444268
 
 [node name="Light" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
 scale = Vector2(2, 2)
 color = Color(1, 0.886275, 0.686275, 1)
-energy = 1.66
 texture = SubResource("GradientTexture2D_nv20u")
 
 [node name="Area2D" type="Area2D" parent="."]
