@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://cirp0ognt0d8x"]
+[gd_scene load_steps=7 format=4 uid="uid://cirp0ognt0d8x"]
 
 [ext_resource type="PackedScene" uid="uid://bwihkl3ak0mbl" path="res://Tileset/tilemap.tscn" id="2_amp6q"]
 [ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="2_ecic7"]
 [ext_resource type="PackedScene" uid="uid://dprlinv8gujgw" path="res://respawn_point.tscn" id="3_amp6q"]
+[ext_resource type="PackedScene" uid="uid://dgsgnx8gc06ij" path="res://enemies/NORMAL ENEMY (SHOOTING).tscn" id="4_i5daf"]
 
-[sub_resource type="Gradient" id="Gradient_i5daf"]
+[sub_resource type="Gradient" id="Gradient_f3x16"]
 offsets = PackedFloat32Array(0, 0.746154)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_amp6q"]
-gradient = SubResource("Gradient_i5daf")
+gradient = SubResource("Gradient_f3x16")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
@@ -69,3 +70,6 @@ texture = SubResource("GradientTexture2D_amp6q")
 [node name="Respawn point" parent="." instance=ExtResource("3_amp6q")]
 position = Vector2(-959, -405)
 scale = Vector2(1.68, 1.68)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_i5daf")]
+position = Vector2(297, -204)

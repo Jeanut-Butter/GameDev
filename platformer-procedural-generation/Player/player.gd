@@ -13,6 +13,8 @@ extends CharacterBody2D
 @export var dash: = false
 @export var grapple_abblity = false
 @export var quick_draw: = false
+
+
  # instead if checking if player is on ground to jump,
 # simply have a jump count that limits how many times the play can jump  in a rpw 
 
