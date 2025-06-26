@@ -1,22 +1,19 @@
 extends Node2D
 
-# line 36 Needs potenitaol adjustment 
-# line 105 may need major overhall to include momentum not just velocity 
-
 var player
 var is_grappling = false
 var grapple_point = Vector2.ZERO
 
 var max_rope_length := 400.0
-var min_rope_length := 20.0
+var min_rope_length := 30.0
 
 var momentum_timer := 0.0
 var momentum_duration := 0.2
 var post_grapple_velocity := Vector2.ZERO
 
-var grapple_duration := 0.2
+var grapple_duration := 0.8
 var grapple_time := 0.0
-var grapple_cooldown := 1.0
+var grapple_cooldown := 2.0
 var grapple_cooldown_timer := 0.0
 
 @onready var rope := Line2D.new()
@@ -27,16 +24,15 @@ func _init(p):
 func _ready():
 	add_child(rope)
 	rope.width = 8	
-	rope.default_color = Color(0.0, 0.0, 0.0)   # vissuals of grapples rope  
+	rope.default_color = Color(0.0, 0.0, 0.0)
 
 func update(delta):
 	if grapple_cooldown_timer > 0.0:
 		grapple_cooldown_timer -= delta
 
-	if Input.is_action_pressed("grapple") and grapple_cooldown_timer >= 0.0:  # checks id coolodwn timer is 
+	if Input.is_action_pressed("grapple") and grapple_cooldown_timer <= 0.0:
 		if not is_grappling:
 			shoot_grapple()
-
 	else:
 		if is_grappling:
 			post_grapple_velocity = player.velocity
@@ -54,30 +50,27 @@ func update(delta):
 			grapple_cooldown_timer = grapple_cooldown  
 	elif momentum_timer > 0.0:
 		apply_post_grapple_momentum(delta)
-	else:
-		if is_grappling:
-			post_grapple_velocity = player.velocity
-			momentum_timer = momentum_duration
-			is_grappling = false
-			grapple_time = 0.0
-			grapple_cooldown_timer = grapple_cooldown
-
 
 	update_rope()
 
-
 func shoot_grapple():
-	var ray = player.get_node_or_null("Grapple")
-	if not ray:
-		return
+	var from_pos = player.global_position
+	var to_pos = player.get_global_mouse_position()
 
-	ray.target_position = (player.get_global_mouse_position() - player.global_position)#.limit_length(max_rope_length)
-	ray.force_raycast_update()
+	var space_state = get_world_2d().direct_space_state
 
-	if ray.is_colliding():
-		var collider = ray.get_collider()
-		if collider and collider.is_in_group("Grapplable"):
-			grapple_point = ray.get_collision_point()
+	var query = PhysicsRayQueryParameters2D.create(from_pos, to_pos)
+	query.exclude = [player]
+	query.collision_mask = 0xFFFFFFFF  
+	query.hit_from_inside = true       
+
+
+	var result = space_state.intersect_ray(query)
+
+	if result and "position" in result:
+		var collider = result.collider
+		if collider and (collider.is_in_group("Grapplable") or collider is TileMap):
+			grapple_point = result.position
 			is_grappling = true
 			grapple_time = 0.0
 
@@ -90,19 +83,13 @@ func simulate_grapple(delta):
 
 	player.velocity.y += player.gravity * delta
 
-	var grapple_pull_speed =20.0
+	var grapple_pull_speed = 400.0
 	player.velocity = direction * grapple_pull_speed
 
 	var input_x = Input.get_axis("walk_left", "walk_right")
-	var input_y = Input.get_axis("move_up", "move_down")  # optional
-	var input_force = Vector2(input_x, input_y).normalized() * 200.0
+	var input_y = Input.get_axis("move_up", "move_down")
+	var input_force = Vector2(input_x, input_y).normalized() * 800.0
 	player.velocity += input_force * delta
-
-#	if distance < 50.0:
-#		is_grappling = false
-#		post_grapple_velocity = player.velocity
-#		momentum_timer = momentum_duration
-
 
 func apply_post_grapple_momentum(delta):
 	momentum_timer -= delta

@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwihkl3ak0mbl"]
+[gd_scene load_steps=2 format=3 uid="uid://bwihkl3ak0mbl"]
 
 [ext_resource type="TileSet" uid="uid://ddjq2nhx17qfr" path="res://Tileset/TILESET_MASTER.tres" id="1_bqaev"]
 
-[sub_resource type="TileSet" id="TileSet_bqaev"]
-
-[node name="Tilemap" type="TileMapLayer" groups=["walls"]]
+[node name="Tilemap" type="TileMapLayer" groups=["Grapplable", "walls"]]
 tile_set = ExtResource("1_bqaev")
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_bqaev")
-format = 2
