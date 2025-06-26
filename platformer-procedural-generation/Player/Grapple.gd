@@ -12,7 +12,7 @@ var momentum_duration := 0.2
 var post_grapple_velocity := Vector2.ZERO
 
 var grapple_duration := 0.8
-var grapple_time := 0.0
+var grapple_time := 0.0                               
 var grapple_cooldown := 2.0
 var grapple_cooldown_timer := 0.0
 
@@ -23,8 +23,8 @@ func _init(p):
 
 func _ready():
 	add_child(rope)
-	rope.width = 8	
-	rope.default_color = Color(0.0, 0.0, 0.0)
+	rope.width = 2
+	rope.default_color =  Color(0.545098, 0.270588, 0.0745098, 1)
 
 func update(delta):
 	if grapple_cooldown_timer > 0.0:
@@ -75,7 +75,6 @@ func shoot_grapple():
 			grapple_time = 0.0
 
 
-
 func simulate_grapple(delta):
 	var to_grapple = grapple_point - player.global_position
 	var distance = to_grapple.length()
@@ -83,7 +82,7 @@ func simulate_grapple(delta):
 
 	player.velocity.y += player.gravity * delta
 
-	var grapple_pull_speed = 400.0
+	var grapple_pull_speed = 600.0
 	player.velocity = direction * grapple_pull_speed
 
 	var input_x = Input.get_axis("walk_left", "walk_right")
