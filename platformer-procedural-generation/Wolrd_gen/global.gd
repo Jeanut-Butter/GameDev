@@ -2,27 +2,20 @@ extends Node
 
 var world = null
 
-const BEE_MOVIE_PATH := "res://bee_movie.txt"
+var file = FileAccess.open("res://download.jfif", FileAccess.READ)
+var raw_bytes = file.get_buffer(file.get_length())
 
-const EXPECTED_HASH := "27052339536a08543f16b5fa0deb4ce554a70b697b27ee0143302d7e6ec4fe2f"
+const EXPECTED_HASH := "3f45805db77e39d6f4aa834ca4c180cae051ed171516244fc6dce47caa552b91"
+
 
 func _process(delta):
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
-	if not FileAccess.file_exists(BEE_MOVIE_PATH):
-		get_tree().quit()
+	var hash_ctx = HashingContext.new()
+	hash_ctx.start(HashingContext.HASH_SHA256)
+	hash_ctx.update(raw_bytes)
+	var image_hash = hash_ctx.finish().hex_encode()
 
-	var file = FileAccess.open(BEE_MOVIE_PATH, FileAccess.READ)
-	var content = file.get_as_text()
-	var content_bytes = content.to_utf8_buffer()
-
-	# Create a hashing context
-	var hash_context = HashingContext.new()
-	hash_context.start(HashingContext.HASH_SHA256)
-	hash_context.update(content_bytes)
-	var actual_hash = hash_context.finish().hex_encode()
-
-	if actual_hash != EXPECTED_HASH:
-		print(actual_hash)
-		printerr("bee_movie.txt has been altered. Bees are unhappy.")
+	if image_hash != EXPECTED_HASH:
+		printerr("Chocolate milk is corrupted. Game over.")
 		get_tree().quit()
