@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Chanable varriables for player can be alteredoutside of code temproralily  
+# genneral values 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed := 18
@@ -8,15 +8,28 @@ extends CharacterBody2D
 @export var gravity := 900
 @export var max_jumps = 2
 
+# unlockables trough tutorial 
+
 @export var Pistol: = false
 @export var knife: = false
 @export var dash: = false
 @export var grapple_abblity = false
 @export var quick_draw: = false
 
+# Dash 
+
+@export var dash_speed := 600
+@export var dash_duration := 0.15
+@export var dash_cooldown := 0.5
+
+var dash_timer := 0.0
+var dash_cooldown_timer := 0.0
+var is_dashing := false
+var dash_direction := Vector2.ZERO
+
 
  # instead if checking if player is on ground to jump,
-# simply have a jump count that limits how many times the play can jump  in a rpw 
+# simply have a jump count that limits how many times the play can jump
 
 var jump_count := 0
 
@@ -39,14 +52,27 @@ func _ready():
 	
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
-	
-	if gravity_enabled:
-		# Gravity and movement
-		velocity.y += gravity * delta
-		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
 
-		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
-			gun.shoot()
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= delta
+
+	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing and dash:
+		is_dashing = true
+		dash_timer = dash_duration
+		dash_cooldown_timer = dash_cooldown
+		dash_direction = Vector2(sign(velocity.x), 0)
+		if dash_direction == Vector2.ZERO:
+			dash_direction.x = -1 if sprite.flip_h else 1 
+
+	if is_dashing:
+		velocity = dash_direction * dash_speed
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+	else:
+		if gravity_enabled:
+			velocity.y += gravity * delta
+			velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
 
 		if is_on_floor():
 			jump_count = 0
@@ -55,23 +81,23 @@ func _physics_process(delta):
 			velocity.y = jump_speed
 			jump_count += 1
 
-		var anim_to_play = "Idle"
-		if abs(velocity.x) > 0.1:
-			if Pistol or knife:
-				anim_to_play = "walk_arm_extended"
-			else:
-				anim_to_play = "Walk_unarmed"
+		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
+			gun.shoot()
 
-		if sprite.animation != anim_to_play:
-			sprite.play(anim_to_play)
+	var anim_to_play = "Idle"
+	if abs(velocity.x) > 0.1:
+		anim_to_play = "walk_arm_extended" if Pistol or knife else "Walk_unarmed"
 
-		sprite.flip_h = velocity.x < 0
-		
-		# Grapple logic
-		grapple.update(delta)
+	if sprite.animation != anim_to_play:
+		sprite.play(anim_to_play)
 
-		# Move
-		move_and_slide()
+	sprite.flip_h = velocity.x < 0
+
+	# Grapple
+	grapple.update(delta)
+
+	move_and_slide()
+
 
 
 func generation_complete(value):
