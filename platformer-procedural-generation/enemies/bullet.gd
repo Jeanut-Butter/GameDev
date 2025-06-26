@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 @export var speed = 800
 var direction = Vector2.ZERO
