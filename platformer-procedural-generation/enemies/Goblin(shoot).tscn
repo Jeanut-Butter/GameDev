@@ -44,6 +44,22 @@ region = Rect2(900, 0, 150, 150)
 atlas = ExtResource("3_yccsd")
 region = Rect2(1050, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sso2e"]
+atlas = ExtResource("7_0ar3w")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7jns"]
+atlas = ExtResource("7_0ar3w")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lul31"]
+atlas = ExtResource("7_0ar3w")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee6cl"]
+atlas = ExtResource("7_0ar3w")
+region = Rect2(450, 0, 150, 150)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_o86x1"]
 atlas = ExtResource("4_g2r83")
 region = Rect2(0, 0, 150, 150)
@@ -108,22 +124,6 @@ region = Rect2(900, 0, 150, 150)
 atlas = ExtResource("6_uur5v")
 region = Rect2(1050, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sso2e"]
-atlas = ExtResource("7_0ar3w")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7jns"]
-atlas = ExtResource("7_0ar3w")
-region = Rect2(150, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lul31"]
-atlas = ExtResource("7_0ar3w")
-region = Rect2(300, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ee6cl"]
-atlas = ExtResource("7_0ar3w")
-region = Rect2(450, 0, 150, 150)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_0cnjt"]
 animations = [{
 "frames": [{
@@ -154,6 +154,23 @@ animations = [{
 "loop": true,
 "name": &"attack",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sso2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7jns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lul31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee6cl")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -217,23 +234,6 @@ animations = [{
 "loop": true,
 "name": &"move",
 "speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sso2e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p7jns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lul31")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ee6cl")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -248,6 +248,5 @@ shape = SubResource("CapsuleShape2D_biweg")
 position = Vector2(31.5, 12.9998)
 scale = Vector2(1.98, 1.65333)
 sprite_frames = SubResource("SpriteFrames_0cnjt")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.255554

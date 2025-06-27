@@ -1,58 +1,58 @@
 extends CharacterBody2D
 
-# genneral values 
+# General
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-
 @export var speed := 18
 @export var jump_speed := -250
 @export var gravity := 900
 @export var max_jumps = 2
+@export var max_health := 5
+var current_health := max_health
+var is_invincible := false
+@export var invincibility_time := 0.5
+@onready var melee_hitbox = $MeleeHitbox
 
-# unlockables trough tutorial 
+# Unlockables
+@export var Pistol := false
+@export var knife := false
+@export var dash := false
+@export var grapple_abblity := false
+@export var quick_draw := false
 
-@export var Pistol: = false
-@export var knife: = false
-@export var dash: = false
-@export var grapple_abblity = false
-@export var quick_draw: = false
-
-# Dash 
-
+# Dash
 @export var dash_speed := 600
 @export var dash_duration := 0.15
 @export var dash_cooldown := 0.5
-
 var dash_timer := 0.0
 var dash_cooldown_timer := 0.0
 var is_dashing := false
 var dash_direction := Vector2.ZERO
 
-
- # instead if checking if player is on ground to jump,
-# simply have a jump count that limits how many times the play can jump
-
+# Jump
 var jump_count := 0
-
 var gravity_enabled: bool = false
 
+# Attachments
 @onready var coyote_timer := $AnimatedSprite2D/coyoteTimer
 @onready var grapple := preload("res://Player/Grapple.gd").new(self)
 @onready var gun = $AnimatedSprite2D/Gun	
 
+# Melee Combat
+var is_attacking := false
+var attack_step := 0
+@export var attack_damage := 1
 
 func _ready():
-	#print("Gun node:", $Gun)
-	#print("Script attached to Gun:", $Gun.get_script())
-	#print("Has shoot():", $Gun.has_method("shoot"))
-	# debug lines 
 	gravity_enabled = true
 	global_position.x = self.position.x
 	print("player is at: ", self.position)
 	add_child(grapple)
-	
+	melee_hitbox.monitoring = false  # Ensure it's off at start
+
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
 
+	# Dash
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
 
@@ -80,26 +80,70 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 			velocity.y = jump_speed
 			jump_count += 1
-			
 
 		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
-			gun.shoot()
+			#gun.shoot()
+			print("wouls shoot if i could")
 
+	# Animation
 	var anim_to_play = "Idle"
 	if abs(velocity.x) > 0.1:
-		anim_to_play = "run" if Pistol or knife else "run"
+		anim_to_play = "run"
 
-	if sprite.animation != anim_to_play:
+	if sprite.animation != anim_to_play and not is_attacking:
 		sprite.play(anim_to_play)
 
 	sprite.flip_h = velocity.x < 0
 
-	# Grapple
+	# Grapple logic
 	grapple.update(delta)
 
 	move_and_slide()
 
+func _input(event):
+	if event.is_action_pressed("attack") and not is_attacking:
+		start_attack()
 
+func start_attack():
+	is_attacking = true
+	attack_step += 1
+	if attack_step == 1:
+		sprite.play("attack_1")
+	elif attack_step == 2:
+		sprite.play("attack_2")
+	else:
+		sprite.play("attack_combo") 
+
+	# Enable hitbox briefly
+	melee_hitbox.monitoring = true
+	await sprite.animation_finished
+	melee_hitbox.monitoring = false
+
+	await get_tree().create_timer(0.3).timeout
+	is_attacking = false
+	attack_step = 0
+
+func take_damage(amount: int):
+	if is_invincible:
+		return
+	current_health -= amount
+	is_invincible = true
+	sprite.play("hurt")
+	if current_health <= 0:
+		die()
+	else:
+		await get_tree().create_timer(invincibility_time).timeout
+		is_invincible = false
+
+func die():
+	sprite.play("death")
+	set_physics_process(false)
+	await sprite.animation_finished
+	queue_free()
 
 func generation_complete(value):
 	gravity_enabled = true
+
+func _on_MeleeHitbox_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(attack_damage)
