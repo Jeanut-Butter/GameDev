@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmu8r53qgw4fd"]
 
-[ext_resource type="Script" uid="uid://pktk4i6o4hy1" path="res://enemies/bullet.gd" id="1_uotum"]
-[ext_resource type="Texture2D" uid="uid://dafk0q37fnevc" path="res://Player/knife.png" id="1_vlak3"]
+[ext_resource type="Script" uid="uid://pktk4i6o4hy1" path="res://enemies/bullet.gd" id="1_3cbj3"]
+[ext_resource type="Texture2D" uid="uid://dafk0q37fnevc" path="res://Player/knife.png" id="2_e86wx"]
 
 [node name="Area2D" type="Area2D"]
-script = ExtResource("1_uotum")
+script = ExtResource("1_3cbj3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 3.12565
-texture = ExtResource("1_vlak3")
+texture = ExtResource("2_e86wx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 3.1405
