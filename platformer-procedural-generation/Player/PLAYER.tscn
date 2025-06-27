@@ -320,4 +320,5 @@ rotation = -0.0304867
 polygon = PackedVector2Array(-5.48539, 15.8402, -3.24246, 7.90484, -3.99814, -0.121928, -2.69379, -10.0868, 3.30343, -9.90391, 3.02909, -0.90809, 2.75475, 8.08773, 4.47948, 17.1445, -0.243856, 7.99628)
 
 [node name="running" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-1, 16, 0, 8, 1, -1, 0, -9, 9, -9, 8, 5, 8, 10, 8, 16)
