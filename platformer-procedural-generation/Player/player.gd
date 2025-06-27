@@ -39,8 +39,8 @@ var gravity_enabled: bool = false
 
 # Melee Combat
 var is_attacking := false
-var attack_step := 0
-@export var attack_damage := 1
+var attack_step := 1
+@export var attack_damage := 10
 
 func _ready():
 	gravity_enabled = true
@@ -53,10 +53,26 @@ func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
 
 	# Dash
+
+	if gravity_enabled:
+		velocity.y += gravity * delta
+		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
+
+	if is_on_floor():
+		jump_count = 0
+
+	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
+		velocity.y = jump_speed
+		jump_count += 1
+
+	if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
+		#gun.shoot()
+		print("wouls shoot if i could")
+			
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
 
-	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing and dash:
+	if Input.is_action_just_pressed("dash") and is_dashing == false:
 		is_dashing = true
 		dash_timer = dash_duration
 		dash_cooldown_timer = dash_cooldown
@@ -68,34 +84,23 @@ func _physics_process(delta):
 		velocity = dash_direction * dash_speed
 		dash_timer -= delta
 		if dash_timer <= 0:
+			await get_tree().create_timer(2)
 			is_dashing = false
-	else:
-		if gravity_enabled:
-			velocity.y += gravity * delta
-			velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
-
-		if is_on_floor():
-			jump_count = 0
-
-		if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
-			velocity.y = jump_speed
-			jump_count += 1
-
-		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
-			#gun.shoot()
-			print("wouls shoot if i could")
 
 	# Animation
 	var anim_to_play = "Idle"
 	if abs(velocity.x) > 0.1:
 		anim_to_play = "run"
-
+	if abs(velocity.y) < 0.0:
+		anim_to_play = "fall"
+	if abs(velocity.x) > 0.1 and Input.is_action_pressed("slide"):
+		anim_to_play = "Slide"
+	
 	if sprite.animation != anim_to_play and not is_attacking:
 		sprite.play(anim_to_play)
-
+		
 	sprite.flip_h = velocity.x < 0
 
-	# Grapple logic
 	grapple.update(delta)
 
 	move_and_slide()
@@ -109,26 +114,27 @@ func start_attack():
 	attack_step += 1
 	if attack_step == 1:
 		sprite.play("attack_1")
-	elif attack_step == 2:
+	elif attack_step == 3:
 		sprite.play("attack_2")
-	else:
-		sprite.play("attack_combo") 
-
-	# Enable hitbox briefly
+	elif attack_step == 2:
+		sprite.play("attack_chain_1") 
+	if attack_step == 3:
+		attack_step = 0
+	#hixbo
 	melee_hitbox.monitoring = true
 	await sprite.animation_finished
 	melee_hitbox.monitoring = false
 
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.2).timeout
 	is_attacking = false
-	attack_step = 0
+	#print(attack_step)
 
 func take_damage(amount: int):
 	if is_invincible:
 		return
 	current_health -= amount
 	is_invincible = true
-	sprite.play("hurt")
+	sprite.play("fall")
 	if current_health <= 0:
 		die()
 	else:

@@ -39,7 +39,8 @@ func _physics_process(delta):
 func shoot_repeatedly():
 	while not is_dead:
 		if can_shoot:
-			shoot()
+			#shoot()
+			print("shootery")
 		await get_tree().create_timer(shoot_interval).timeout
 
 func shoot():
@@ -65,12 +66,14 @@ func shoot():
 func take_damage(amount: int):
 	if is_dead:
 		return
-
+	print("owww")
 	current_health -= amount
+	print("Boss HP:", current_health)
 	if current_health <= 0:
 		die()
 	else:
 		$AnimatedSprite2D.play("hurt")
+
 
 func die():
 	is_dead = true
