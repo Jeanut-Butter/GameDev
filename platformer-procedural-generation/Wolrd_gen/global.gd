@@ -7,7 +7,6 @@ var raw_bytes = file.get_buffer(file.get_length())
 
 const EXPECTED_HASH := "3f45805db77e39d6f4aa834ca4c180cae051ed171516244fc6dce47caa552b91"
 
-
 func _process(delta):
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()

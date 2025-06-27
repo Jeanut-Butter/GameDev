@@ -1,0 +1,22 @@
+
+[gd_resource type="ItemProtoSet" load_steps=2 format=3]
+
+[resource]
+
+prototypes = {
+    "apple": {
+        "name": "Apple",
+        "icon": "res://icons/apple.png",
+        "max_stack_size": 10
+    },
+    "sword": {
+        "name": "Sword",
+        "icon": "res://icons/sword.png",
+        "max_stack_size": 1
+    },
+    "chocolate_milk": {
+        "name": "Chocolate Milk",
+        "icon": "res://icons/chocolate_milk.png",
+        "max_stack_size": 3
+    }
+}
