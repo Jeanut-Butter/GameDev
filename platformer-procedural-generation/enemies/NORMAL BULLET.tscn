@@ -7,7 +7,9 @@
 script = ExtResource("1_uotum")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.12565
 texture = ExtResource("1_vlak3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 3.1405
 polygon = PackedVector2Array(-13, 1, -13, 5, -5, 4, -4, 6, 8, 6, 13, 3, 13, 1)

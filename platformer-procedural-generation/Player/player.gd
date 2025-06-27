@@ -80,13 +80,14 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 			velocity.y = jump_speed
 			jump_count += 1
+			
 
 		if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
 			gun.shoot()
 
 	var anim_to_play = "Idle"
 	if abs(velocity.x) > 0.1:
-		anim_to_play = "walk_arm_extended" if Pistol or knife else "Walk_unarmed"
+		anim_to_play = "run" if Pistol or knife else "run"
 
 	if sprite.animation != anim_to_play:
 		sprite.play(anim_to_play)
