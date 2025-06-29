@@ -76,7 +76,7 @@ offset_left = -145.0
 offset_top = -238.0
 offset_right = -35.0
 offset_bottom = -164.0
-text = "Use Right mouse to grapple"
+text = "Use E to grapple"
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Text"]
 offset_left = 79.0
