@@ -3,6 +3,7 @@ extends CharacterBody2D
 # General
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var speed := 18
+var default_speed = speed
 @export var jump_speed := -250
 @export var gravity := 900
 @export var max_jumps = 2
@@ -27,6 +28,10 @@ var dash_timer := 0.0
 var dash_cooldown_timer := 0.0
 var is_dashing := false
 var dash_direction := Vector2.ZERO
+
+# Slide
+var is_sliding := false
+var slide_speed := speed + (speed/6)
 
 # Jump
 var jump_count := 0
@@ -87,6 +92,7 @@ func _physics_process(delta):
 			await get_tree().create_timer(2)
 			is_dashing = false
 
+
 	# Animation
 	var anim_to_play = "Idle"
 	if abs(velocity.x) > 0.1:
@@ -95,6 +101,14 @@ func _physics_process(delta):
 		anim_to_play = "fall"
 	if abs(velocity.x) > 0.1 and Input.is_action_pressed("slide"):
 		anim_to_play = "Slide"
+		is_sliding = true
+		
+	if is_sliding:
+		speed = slide_speed
+		
+	if Input.is_action_just_released("slide"):
+		is_sliding = false
+		speed = default_speed
 	
 	if sprite.animation != anim_to_play and not is_attacking:
 		sprite.play(anim_to_play)
