@@ -470,6 +470,8 @@ radius = 19.2354
 [node name="Player" type="CharacterBody2D" groups=["Player or such", "player"]]
 light_mask = 2
 script = ExtResource("1_vhva7")
+dash_cooldown_timer = 0.6
+slide_cooldown_time = 0.6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")

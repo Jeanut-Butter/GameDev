@@ -25,13 +25,15 @@ var is_invincible := false
 @export var dash_duration := 0.15
 @export var dash_cooldown := 0.5
 var dash_timer := 0.0
-var dash_cooldown_timer := 0.0
+@export var dash_cooldown_timer := 0.5
 var is_dashing := false
 var dash_direction := Vector2.ZERO
 
 # Slide
 var is_sliding := false
 var slide_speed := speed + (speed/6)
+var is_slide_on_cooldown: bool = false
+@export var slide_cooldown_time: float = 1.5  # in seconds
 
 # Jump
 var jump_count := 0
@@ -87,28 +89,27 @@ func _physics_process(delta):
 
 	if is_dashing:
 		velocity = dash_direction * dash_speed
-		dash_timer -= delta
-		if dash_timer <= 0:
-			await get_tree().create_timer(2)
-			is_dashing = false
-
-
+		await get_tree().create_timer(2)
+		is_dashing = false
+			
+	# Slide
+	
+	if abs(velocity.x) > 0.1 \
+		and Input.is_action_just_pressed("slide") \
+		and !is_sliding \
+		and !is_slide_on_cooldown:
+		
+		call_deferred("start_slide")
+	
 	# Animation
 	var anim_to_play = "Idle"
 	if abs(velocity.x) > 0.1:
 		anim_to_play = "run"
 	if abs(velocity.y) < 0.0:
 		anim_to_play = "fall"
-	if abs(velocity.x) > 0.1 and Input.is_action_pressed("slide"):
-		anim_to_play = "Slide"
-		is_sliding = true
-		
 	if is_sliding:
-		speed = slide_speed
+		anim_to_play = "Slide"
 		
-	if Input.is_action_just_released("slide"):
-		is_sliding = false
-		speed = default_speed
 	
 	if sprite.animation != anim_to_play and not is_attacking:
 		sprite.play(anim_to_play)
@@ -167,3 +168,16 @@ func generation_complete(value):
 func _on_MeleeHitbox_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(attack_damage)
+
+func start_slide():
+	is_sliding = true
+	is_slide_on_cooldown = true
+	speed = slide_speed
+	sprite.play("Slide")
+
+	await get_tree().create_timer(0.3).timeout  # Slide duration
+	is_sliding = false
+	speed = default_speed
+
+	await get_tree().create_timer(slide_cooldown_time).timeout  # Cooldown
+	is_slide_on_cooldown = false
