@@ -38,6 +38,9 @@ position = Vector2(1650, -97)
 scale = Vector2(7, 4)
 color = Color(1, 0.886275, 0.686275, 1)
 energy = 0.94
+range_z_min = 0
+range_z_max = 0
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_amp6q")
 
 [node name="Light7" type="PointLight2D" parent="Tree_lights"]

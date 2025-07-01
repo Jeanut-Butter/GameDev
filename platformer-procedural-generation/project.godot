@@ -28,7 +28,7 @@ window/size/window_height_override=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gloot/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 

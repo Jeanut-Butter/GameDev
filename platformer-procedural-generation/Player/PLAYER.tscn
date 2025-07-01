@@ -473,7 +473,7 @@ script = ExtResource("1_vhva7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
-animation = &"Idle"
+animation = &"run"
 autoplay = "Idle"
 speed_scale = 1.6
 
