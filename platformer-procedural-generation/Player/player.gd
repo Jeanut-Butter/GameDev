@@ -21,11 +21,11 @@ var is_invincible := false
 @export var quick_draw := false
 
 # Dash
-@export var dash_speed := 600
-@export var dash_duration := 0.15
-@export var dash_cooldown := 0.5
+@export var dash_speed := 800
+@export var dash_duration := 0.120
+@export var dash_cooldown := 0.3
 var dash_timer := 0.0
-@export var dash_cooldown_timer := 0.5
+@export var dash_cooldown_timer := 0.3
 var is_dashing := false
 var dash_direction := Vector2.ZERO
 var is_dash_invincible := false
@@ -38,7 +38,7 @@ var is_sliding := false
 var can_slide := true  # replaces is_slide_on_cooldown
 @export var slide_speed := speed + (speed/6)
 @export var slide_duration := 0.5
-@export var slide_cooldown := 1.5
+@export var slide_cooldown := 0.8
 
 # Jump
 var jump_count := 0
