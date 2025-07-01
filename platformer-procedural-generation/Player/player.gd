@@ -3,7 +3,7 @@ extends CharacterBody2D
 # General
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var speed := 18
-@export var jump_speed := -250
+@export var jump_speed := -300
 @export var gravity := 900
 @export var max_jumps = 2
 @export var max_health := 5
@@ -71,8 +71,8 @@ func _physics_process(delta):
 			
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
-
-	if Input.is_action_just_pressed("dash") and is_dashing == false:
+# dash/slide thing
+	if Input.is_action_just_pressed("slide") and is_dashing == false:
 		is_dashing = true
 		dash_timer = dash_duration
 		dash_cooldown_timer = dash_cooldown
