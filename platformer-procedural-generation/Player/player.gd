@@ -28,12 +28,17 @@ var dash_timer := 0.0
 @export var dash_cooldown_timer := 0.5
 var is_dashing := false
 var dash_direction := Vector2.ZERO
+var is_dash_invincible := false
+
+var ghost_timer := 0.0
+@onready var ghost_scene := preload("res://Player/DashGhost.tscn")
 
 # Slide
 var is_sliding := false
-var slide_speed := speed + (speed/6)
-var is_slide_on_cooldown: bool = false
-@export var slide_cooldown_time: float = 1.5  # in seconds
+var can_slide := true  # replaces is_slide_on_cooldown
+@export var slide_speed := speed + (speed/6)
+@export var slide_duration := 0.5
+@export var slide_cooldown := 1.5
 
 # Jump
 var jump_count := 0
@@ -79,27 +84,32 @@ func _physics_process(delta):
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
 
-	if Input.is_action_just_pressed("dash") and is_dashing == false:
-		is_dashing = true
-		dash_timer = dash_duration
-		dash_cooldown_timer = dash_cooldown
-		dash_direction = Vector2(sign(velocity.x), 0)
-		if dash_direction == Vector2.ZERO:
-			dash_direction.x = -1 if sprite.flip_h else 1 
-
+	if Input.is_action_just_pressed("dash") and !is_dashing and dash_cooldown_timer <= 0:
+		start_dash()
+	
 	if is_dashing:
 		velocity = dash_direction * dash_speed
-		await get_tree().create_timer(2)
-		is_dashing = false
+		dash_timer -= delta
+		
+		ghost_timer -= delta
+		if ghost_timer <= 0:
+			spawn_dash_ghost()
+			ghost_timer = 0.5
+			
+		if dash_timer <= 0:
+			is_dashing = false
+			is_dash_invincible = false
+	else:
+		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
 			
 	# Slide
 	
 	if abs(velocity.x) > 0.1 \
 		and Input.is_action_just_pressed("slide") \
-		and !is_sliding \
-		and !is_slide_on_cooldown:
-		
-		call_deferred("start_slide")
+		and can_slide:
+
+		can_slide = false  # Lock it BEFORE calling
+		start_slide()
 	
 	# Animation
 	var anim_to_play = "Idle"
@@ -145,7 +155,7 @@ func start_attack():
 	#print(attack_step)
 
 func take_damage(amount: int):
-	if is_invincible:
+	if is_invincible or is_dash_invincible:
 		return
 	current_health -= amount
 	is_invincible = true
@@ -171,13 +181,32 @@ func _on_MeleeHitbox_body_entered(body):
 
 func start_slide():
 	is_sliding = true
-	is_slide_on_cooldown = true
 	speed = slide_speed
 	sprite.play("Slide")
 
-	await get_tree().create_timer(0.3).timeout  # Slide duration
+	await get_tree().create_timer(slide_duration).timeout
 	is_sliding = false
 	speed = default_speed
 
-	await get_tree().create_timer(slide_cooldown_time).timeout  # Cooldown
-	is_slide_on_cooldown = false
+	await get_tree().create_timer(slide_cooldown).timeout
+	can_slide = true  # Unlock after cooldown
+
+func start_dash():
+	is_dashing = true
+	is_dash_invincible = true
+	dash_direction = Vector2(sign(velocity.x), 0)
+	if dash_direction == Vector2.ZERO:
+		dash_direction.x = -1 if sprite.flip_h else 1
+	
+	dash_cooldown_timer = dash_cooldown
+	dash_timer = dash_duration
+	
+	ghost_timer = 0
+	
+func spawn_dash_ghost():
+	var ghost = ghost_scene.instantiate()
+	#ghost.texture = sprite.sprite_frames.get_frame(sprite.animation, sprite.frame)
+	ghost.global_position = global_position
+	ghost.scale = sprite.scale
+	ghost.flip_h = sprite.flip_h
+	get_tree().current_scene.add_child(ghost)
