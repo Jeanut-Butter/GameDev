@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://qhl2ate2xf4q"]
+
+[ext_resource type="Texture2D" uid="uid://dafk0q37fnevc" path="res://Player/knife.png" id="1_ss36g"]
+[ext_resource type="Script" uid="uid://b0abs88t0qp6g" path="res://Player/ItemData.gd" id="2_3vymx"]
+
+[resource]
+script = ExtResource("2_3vymx")
+name = "Knife"
+icon = ExtResource("1_ss36g")
+description = "Knife go stab"
+item_type = "weapon"
+stackable = false

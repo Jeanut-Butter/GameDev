@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://br3f0rurcrxxy"]
+
+[ext_resource type="Script" uid="uid://d35vk0rfj2jqg" path="res://Player/inventory/InventorySlot.gd" id="1_6oflj"]
+
+[node name="InventorySlot" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6oflj")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
