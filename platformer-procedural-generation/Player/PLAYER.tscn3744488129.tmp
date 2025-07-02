@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=71 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b33lbg0r1kwpj" path="res://Player/Adventurer/Individual Sprites/adventurer-run-04.png" id="8_g8ecs"]
 [ext_resource type="Texture2D" uid="uid://bd1amned2v3uk" path="res://Player/Adventurer/Individual Sprites/adventurer-run-05.png" id="9_0vifo"]
 [ext_resource type="Script" uid="uid://jf4nj2s8qvtp" path="res://Player/melee_hitbox.gd" id="11_ncbhq"]
+[ext_resource type="PackedScene" uid="uid://y75t1s6us8kp" path="res://Player/inventory/inventory_ui.tscn" id="12_r8kj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oqye"]
 atlas = ExtResource("2_62xh7")
@@ -470,6 +471,24 @@ radius = 19.2354
 [node name="Player" type="CharacterBody2D" groups=["Player or such", "player"]]
 light_mask = 2
 script = ExtResource("1_vhva7")
+speed = null
+jump_speed = null
+gravity = null
+max_jumps = null
+max_health = null
+invincibility_time = null
+Pistol = null
+knife = null
+dash = null
+grapple_abblity = null
+quick_draw = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
+dash_cooldown_timer = null
+slide_duration = null
+slide_cooldown = null
+attack_damage = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
@@ -518,3 +537,9 @@ script = ExtResource("11_ncbhq")
 position = Vector2(10, -2)
 shape = SubResource("CircleShape2D_62xh7")
 debug_color = Color(0.95855, 0.205221, 0, 0.42)
+
+[node name="InventoryUI" parent="." instance=ExtResource("12_r8kj4")]
+offset_left = -97.0
+offset_top = -87.0
+offset_right = -97.0
+offset_bottom = -87.0
