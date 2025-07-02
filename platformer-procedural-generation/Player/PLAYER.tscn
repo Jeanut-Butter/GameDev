@@ -440,7 +440,7 @@ script = ExtResource("1_vhva7")
 sprite_frames = SubResource("SpriteFrames_a5owu")
 animation = &"Jumping"
 autoplay = "Jumping"
-frame_progress = 0.00163383
+frame_progress = 0.651262
 speed_scale = 1.6
 
 [node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]

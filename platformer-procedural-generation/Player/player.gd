@@ -115,17 +115,22 @@ func _physics_process(delta):
 		start_slide()
 	
 	# Animation
-	if not is_attacking and not is_jumping:
-		var anim_to_play = "Idle"
-		if abs(velocity.x) > 0.1:
-			anim_to_play = "run"
-	#	if velocity.y > 0:  # falling down
-	#		anim_to_play = "fall"
-		if is_sliding:
-			anim_to_play = "Slide"
+	var anim_to_play = "Idle"
 
-		if sprite.animation != anim_to_play:
-			sprite.play(anim_to_play)
+	if is_sliding:
+		anim_to_play = "Slide"
+	elif is_attacking:
+		pass  # attack animations are already handled
+	elif not is_on_floor():
+		if velocity.y < 0:
+			anim_to_play = "Jumping"
+		else:
+			anim_to_play = "fall"
+	elif abs(velocity.x) > 0.1:
+		anim_to_play = "run"
+
+	if sprite.animation != anim_to_play:
+		sprite.play(anim_to_play)
 
 	# Reset jump anim when player starts falling
 	if is_jumping and velocity.y > 0:
