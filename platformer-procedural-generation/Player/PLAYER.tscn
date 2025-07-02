@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=65 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
@@ -28,10 +28,6 @@ region = Rect2(100, 0, 50, 37)
 atlas = ExtResource("2_62xh7")
 region = Rect2(150, 0, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0xmr"]
-atlas = ExtResource("3_ncbhq")
-region = Rect2(50, 74, 50, 37)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qctof"]
 atlas = ExtResource("3_ncbhq")
 region = Rect2(100, 74, 50, 37)
@@ -39,22 +35,6 @@ region = Rect2(100, 74, 50, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jdek"]
 atlas = ExtResource("3_ncbhq")
 region = Rect2(150, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptmhy"]
-atlas = ExtResource("3_ncbhq")
-region = Rect2(200, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lbhq"]
-atlas = ExtResource("3_ncbhq")
-region = Rect2(250, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7dc0"]
-atlas = ExtResource("3_ncbhq")
-region = Rect2(300, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnqku"]
-atlas = ExtResource("3_ncbhq")
-region = Rect2(0, 111, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fth8v"]
 atlas = ExtResource("2_62xh7")
@@ -241,29 +221,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x0xmr")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qctof")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2jdek")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ptmhy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1lbhq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b7dc0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pnqku")
 }],
 "loop": true,
 "name": &"Jumping",
-"speed": 6.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -473,8 +438,9 @@ script = ExtResource("1_vhva7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
-animation = &"run"
-autoplay = "Idle"
+animation = &"Jumping"
+autoplay = "Jumping"
+frame_progress = 0.00163383
 speed_scale = 1.6
 
 [node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]

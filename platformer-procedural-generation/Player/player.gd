@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var speed := 18
 var default_speed = speed
 @export var jump_speed := -250
+var is_jumping := false
+
 @export var gravity := 900
 @export var max_jumps = 2
 @export var max_health := 5
@@ -75,11 +77,12 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = jump_speed
-		jump_count += 1
+		is_jumping = true
+		sprite.play("Jumping")
 
-	if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
+	#if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
 		#gun.shoot()
-		print("wouls shoot if i could")
+	#	print("wouls shoot if i could")
 			
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
@@ -112,17 +115,22 @@ func _physics_process(delta):
 		start_slide()
 	
 	# Animation
-	var anim_to_play = "Idle"
-	if abs(velocity.x) > 0.1:
-		anim_to_play = "run"
-	if abs(velocity.y) < 0.0:
-		anim_to_play = "fall"
-	if is_sliding:
-		anim_to_play = "Slide"
-		
-	
-	if sprite.animation != anim_to_play and not is_attacking:
-		sprite.play(anim_to_play)
+	if not is_attacking and not is_jumping:
+		var anim_to_play = "Idle"
+		if abs(velocity.x) > 0.1:
+			anim_to_play = "run"
+	#	if velocity.y > 0:  # falling down
+	#		anim_to_play = "fall"
+		if is_sliding:
+			anim_to_play = "Slide"
+
+		if sprite.animation != anim_to_play:
+			sprite.play(anim_to_play)
+
+	# Reset jump anim when player starts falling
+	if is_jumping and velocity.y > 0:
+		is_jumping = false
+
 		
 	sprite.flip_h = velocity.x < 0
 
