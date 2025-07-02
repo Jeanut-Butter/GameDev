@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=71 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b33lbg0r1kwpj" path="res://Player/Adventurer/Individual Sprites/adventurer-run-04.png" id="8_g8ecs"]
 [ext_resource type="Texture2D" uid="uid://bd1amned2v3uk" path="res://Player/Adventurer/Individual Sprites/adventurer-run-05.png" id="9_0vifo"]
 [ext_resource type="Script" uid="uid://jf4nj2s8qvtp" path="res://Player/melee_hitbox.gd" id="11_ncbhq"]
+[ext_resource type="PackedScene" uid="uid://y75t1s6us8kp" path="res://Player/inventory/inventory_ui.tscn" id="12_r8kj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oqye"]
 atlas = ExtResource("2_62xh7")
@@ -518,3 +519,9 @@ script = ExtResource("11_ncbhq")
 position = Vector2(10, -2)
 shape = SubResource("CircleShape2D_62xh7")
 debug_color = Color(0.95855, 0.205221, 0, 0.42)
+
+[node name="InventoryUI" parent="." instance=ExtResource("12_r8kj4")]
+offset_left = -20.0
+offset_top = -52.0
+offset_right = -20.0
+offset_bottom = -52.0
