@@ -11,7 +11,6 @@
 script = ExtResource("1_aqk2v")
 
 [node name="seedsaver" parent="." instance=ExtResource("2_aqk2v")]
-seedName = "terraist"
 
 [node name="World_generator" parent="." instance=ExtResource("1_fj7yv")]
 max_blocks = 100
@@ -29,7 +28,7 @@ max_roughness = 20
 script = ExtResource("5_036b0")
 
 [node name="Icon" type="Sprite2D" parent="GUI"]
-position = Vector2(515, 306)
+position = Vector2(81, 58)
 scale = Vector2(0.367188, 0.242188)
 texture = ExtResource("6_dwbse")
 
