@@ -521,7 +521,7 @@ shape = SubResource("CircleShape2D_62xh7")
 debug_color = Color(0.95855, 0.205221, 0, 0.42)
 
 [node name="InventoryUI" parent="." instance=ExtResource("12_r8kj4")]
-offset_left = -20.0
-offset_top = -52.0
-offset_right = -20.0
-offset_bottom = -52.0
+offset_left = -97.0
+offset_top = -87.0
+offset_right = -97.0
+offset_bottom = -87.0

@@ -14,13 +14,19 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
-custom_minimum_size = Vector2(196, 64)
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 0
-offset_right = 196.0
+offset_right = 192.0
 offset_bottom = 64.0
 columns = 3
 
 [node name="InventorySlot" parent="Panel/GridContainer" instance=ExtResource("2_l6k5w")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Panel/GridContainer" instance=ExtResource("2_l6k5w")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Panel/GridContainer" instance=ExtResource("2_l6k5w")]
 layout_mode = 2
 
 [node name="Tooltip" type="Label" parent="Panel"]
