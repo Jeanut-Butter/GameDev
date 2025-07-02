@@ -54,21 +54,13 @@ var is_attacking := false
 var attack_step := 1
 @export var attack_damage := 10
 
-var bulletItem = preload("res://Player/inventory/Items/Bullet.tres")
-var knifeItem = preload("res://Player/inventory/Items/Knife.tres")
-var pistolItem = preload("res://Player/inventory/Items/Pistol.tres")
-
 func _ready():
 	gravity_enabled = true
 	global_position.x = self.position.x
 	print("player is at: ", self.position)
 	add_child(grapple)
 	melee_hitbox.monitoring = false  # Ensure it's off at start
-	$InventoryUI.visible = false
 	
-	$InventoryUI.populate_inventory([pistolItem, knifeItem, bulletItem])
-	$InventoryUI.visible = false
-
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
 
@@ -137,9 +129,6 @@ func _physics_process(delta):
 	grapple.update(delta)
 
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("OpenInventory"):
-		$InventoryUI.visible = !$InventoryUI.visible
 
 func _input(event):
 	if event.is_action_pressed("attack") and not is_attacking:
