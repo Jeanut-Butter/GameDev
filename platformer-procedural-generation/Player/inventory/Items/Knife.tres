@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dmmknbigufid3"]
+
+[ext_resource type="Script" uid="uid://b0abs88t0qp6g" path="res://Player/inventory/ItemData.gd" id="1_jvgig"]
+[ext_resource type="Texture2D" uid="uid://dafk0q37fnevc" path="res://Player/knife.png" id="1_lhgal"]
+
+[resource]
+script = ExtResource("1_jvgig")
+type = 4
+name = "Knife"
+description = "this is a knife, it go stabby stabby when left click pressed"
+texture = ExtResource("1_lhgal")

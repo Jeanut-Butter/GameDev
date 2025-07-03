@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
-[ext_resource type="PackedScene" uid="uid://be18a2qu2o78l" path="res://Player/inventory/gui.tscn" id="2_r8kj4"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
 [ext_resource type="Texture2D" uid="uid://bsxemoy1pqsdq" path="res://Player/Adventurer/adventurer-Sheet.png" id="3_ncbhq"]
 [ext_resource type="Texture2D" uid="uid://c3uxgggrjhy6o" path="res://Player/Adventurer/Individual Sprites/adventurer-run-00.png" id="4_r8kj4"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b33lbg0r1kwpj" path="res://Player/Adventurer/Individual Sprites/adventurer-run-04.png" id="8_g8ecs"]
 [ext_resource type="Texture2D" uid="uid://bd1amned2v3uk" path="res://Player/Adventurer/Individual Sprites/adventurer-run-05.png" id="9_0vifo"]
 [ext_resource type="Script" uid="uid://jf4nj2s8qvtp" path="res://Player/melee_hitbox.gd" id="11_ncbhq"]
+[ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="12_r8kj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oqye"]
 atlas = ExtResource("2_62xh7")
@@ -437,9 +437,29 @@ radius = 19.2354
 light_mask = 2
 script = ExtResource("1_vhva7")
 
-[node name="GUI" parent="." instance=ExtResource("2_r8kj4")]
-offset = Vector2(30, 0)
-transform = Transform2D(1, 0, 0, 1, 30, 0)
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("12_r8kj4")
+invSize = null
+visibility = null
+
+[node name="Panel" type="Panel" parent="GUI"]
+modulate = Color(0.537255, 1, 1, 1)
+self_modulate = Color(0.443137, 1, 1, 1)
+custom_minimum_size = Vector2(117, 54)
+offset_left = -57.0
+offset_top = -74.0
+offset_right = 60.0
+offset_bottom = -20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Inv" type="GridContainer" parent="GUI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(109, 49)
+offset_left = -53.0
+offset_top = -72.0
+offset_right = 56.0
+offset_bottom = -23.0
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
@@ -466,7 +486,7 @@ libraries = {
 }
 
 [node name="Light" type="PointLight2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(0, -9)
 scale = Vector2(3, 3)
 color = Color(1, 0.886275, 0.686275, 1)
 energy = 0.65
