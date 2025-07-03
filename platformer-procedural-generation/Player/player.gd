@@ -78,6 +78,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = jump_speed
 		is_jumping = true
+		jump_count += 1 
 		sprite.play("Jumping")
 
 	#if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
