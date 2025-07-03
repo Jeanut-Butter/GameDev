@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c8ga1io7j1fsj"]
+
+[ext_resource type="Script" uid="uid://b0abs88t0qp6g" path="res://Player/inventory/Items/ItemData.gd" id="1_iq67o"]
+[ext_resource type="Texture2D" uid="uid://cmn4pv7ibqcqc" path="res://Player/pistol.png" id="2_ss36g"]
+
+[resource]
+script = ExtResource("1_iq67o")
+type = 4
+name = "Pistol"
+description = "This is a gun, the gun shoots bullets when left click, yippee"
+texture = ExtResource("2_ss36g")

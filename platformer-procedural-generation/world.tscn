@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk4qjioby8e0d"]
+[gd_scene load_steps=5 format=3 uid="uid://dk4qjioby8e0d"]
 
 [ext_resource type="Script" uid="uid://cn2vd4pvykxi8" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bilne00fl8swm" path="res://Wolrd_gen/world_generator.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://bmvficb2wrf8c" path="res://Wolrd_gen/seedsaver.tscn" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="4_aqk2v"]
-[ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="5_036b0"]
-[ext_resource type="Texture2D" uid="uid://dxe7jy2yatyxr" path="res://icon.svg" id="6_dwbse"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_aqk2v")
@@ -23,13 +21,5 @@ roughness = 5
 max_roughness = 20
 
 [node name="Player" parent="." instance=ExtResource("4_aqk2v")]
-
-[node name="GUI" type="CanvasLayer" parent="."]
-script = ExtResource("5_036b0")
-
-[node name="Icon" type="Sprite2D" parent="GUI"]
-position = Vector2(348, 254)
-scale = Vector2(0.367188, 0.242188)
-texture = ExtResource("6_dwbse")
 
 [connection signal="generation_complete" from="World_generator" to="Player" method="generation_complete"]

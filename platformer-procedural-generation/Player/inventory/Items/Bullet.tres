@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dc5t782r0l333"]
+
+[ext_resource type="Script" uid="uid://b0abs88t0qp6g" path="res://Player/inventory/Items/ItemData.gd" id="1_vhvay"]
+
+[resource]
+script = ExtResource("1_vhvay")
+type = 5
+name = "Bullet"
+description = "this is a bullet, this is necessary for gun to go pew pew"
