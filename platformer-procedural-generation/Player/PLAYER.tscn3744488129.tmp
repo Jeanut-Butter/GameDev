@@ -1,8 +1,7 @@
-[gd_scene load_steps=66 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=71 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
-[ext_resource type="PackedScene" uid="uid://be18a2qu2o78l" path="res://Player/inventory/gui.tscn" id="2_r8kj4"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
 [ext_resource type="Texture2D" uid="uid://bsxemoy1pqsdq" path="res://Player/Adventurer/adventurer-Sheet.png" id="3_ncbhq"]
 [ext_resource type="Texture2D" uid="uid://c3uxgggrjhy6o" path="res://Player/Adventurer/Individual Sprites/adventurer-run-00.png" id="4_r8kj4"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b33lbg0r1kwpj" path="res://Player/Adventurer/Individual Sprites/adventurer-run-04.png" id="8_g8ecs"]
 [ext_resource type="Texture2D" uid="uid://bd1amned2v3uk" path="res://Player/Adventurer/Individual Sprites/adventurer-run-05.png" id="9_0vifo"]
 [ext_resource type="Script" uid="uid://jf4nj2s8qvtp" path="res://Player/melee_hitbox.gd" id="11_ncbhq"]
+[ext_resource type="PackedScene" uid="uid://y75t1s6us8kp" path="res://Player/inventory/inventory_ui.tscn" id="12_r8kj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oqye"]
 atlas = ExtResource("2_62xh7")
@@ -29,6 +29,10 @@ region = Rect2(100, 0, 50, 37)
 atlas = ExtResource("2_62xh7")
 region = Rect2(150, 0, 50, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0xmr"]
+atlas = ExtResource("3_ncbhq")
+region = Rect2(50, 74, 50, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qctof"]
 atlas = ExtResource("3_ncbhq")
 region = Rect2(100, 74, 50, 37)
@@ -36,6 +40,22 @@ region = Rect2(100, 74, 50, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jdek"]
 atlas = ExtResource("3_ncbhq")
 region = Rect2(150, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptmhy"]
+atlas = ExtResource("3_ncbhq")
+region = Rect2(200, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lbhq"]
+atlas = ExtResource("3_ncbhq")
+region = Rect2(250, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7dc0"]
+atlas = ExtResource("3_ncbhq")
+region = Rect2(300, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnqku"]
+atlas = ExtResource("3_ncbhq")
+region = Rect2(0, 111, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fth8v"]
 atlas = ExtResource("2_62xh7")
@@ -222,14 +242,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_x0xmr")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qctof")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2jdek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptmhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lbhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7dc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnqku")
 }],
 "loop": true,
 "name": &"Jumping",
-"speed": 2.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -436,15 +471,29 @@ radius = 19.2354
 [node name="Player" type="CharacterBody2D" groups=["Player or such", "player"]]
 light_mask = 2
 script = ExtResource("1_vhva7")
-
-[node name="GUI" parent="." instance=ExtResource("2_r8kj4")]
-offset = Vector2(30, 0)
-transform = Transform2D(1, 0, 0, 1, 30, 0)
+speed = null
+jump_speed = null
+gravity = null
+max_jumps = null
+max_health = null
+invincibility_time = null
+Pistol = null
+knife = null
+dash = null
+grapple_abblity = null
+quick_draw = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
+dash_cooldown_timer = null
+slide_duration = null
+slide_cooldown = null
+attack_damage = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
-animation = &"attack_chain_1"
-autoplay = "Jumping"
+animation = &"run"
+autoplay = "Idle"
 speed_scale = 1.6
 
 [node name="Gun" parent="AnimatedSprite2D" instance=ExtResource("2_r8wyc")]
@@ -465,7 +514,7 @@ libraries = {
 }
 
 [node name="Light" type="PointLight2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(0, -9)
 scale = Vector2(3, 3)
 color = Color(1, 0.886275, 0.686275, 1)
 energy = 0.65
@@ -488,3 +537,9 @@ script = ExtResource("11_ncbhq")
 position = Vector2(10, -2)
 shape = SubResource("CircleShape2D_62xh7")
 debug_color = Color(0.95855, 0.205221, 0, 0.42)
+
+[node name="InventoryUI" parent="." instance=ExtResource("12_r8kj4")]
+offset_left = -97.0
+offset_top = -87.0
+offset_right = -97.0
+offset_bottom = -87.0
