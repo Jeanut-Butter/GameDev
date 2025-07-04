@@ -27,7 +27,6 @@ tile_map_data = PackedByteArray("AAD///f/AgAFAAkAAAAAAPf/AgAAAAkAAAABAPf/AgAAAAk
 position = Vector2(-993, -416)
 
 [node name="Nightime" type="DirectionalLight2D" parent="."]
-energy = 0.5
 blend_mode = 1
 
 [node name="Tree_lights" type="Node2D" parent="."]
