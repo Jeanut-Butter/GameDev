@@ -65,7 +65,6 @@ func _ready():
 	
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
-
 	# Dash
 
 	if gravity_enabled:
@@ -74,6 +73,9 @@ func _physics_process(delta):
 
 	if is_on_floor():
 		jump_count = 0
+	if is_sliding and not is_on_floor():
+		is_sliding = false
+		speed = default_speed
 
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = jump_speed
@@ -97,7 +99,6 @@ func _physics_process(delta):
 		
 		ghost_timer -= delta
 		if ghost_timer <= 0:
-			spawn_dash_ghost()
 			ghost_timer = 0.5
 			
 		if dash_timer <= 0:
@@ -116,22 +117,23 @@ func _physics_process(delta):
 		start_slide()
 	
 	# Animation
-	var anim_to_play = "Idle"
+	if not is_attacking:
+		var anim_to_play = "Idle"
 
-	if is_sliding:
-		anim_to_play = "Slide"
-	elif is_attacking:
-		pass  # attack animations are already handled
-	elif not is_on_floor():
-		if velocity.y < 0:
-			anim_to_play = "Jumping"
-		else:
-			anim_to_play = "fall"
-	elif abs(velocity.x) > 0.1:
-		anim_to_play = "run"
+		if is_sliding:
+			anim_to_play = "Slide"
+		elif is_attacking:
+			pass  # attack animations are already handled
+		elif not is_on_floor():
+			if velocity.y < 0:
+				anim_to_play = "Jumping"
+			else:
+				anim_to_play = "fall"
+		elif abs(velocity.x) > 0.1:
+			anim_to_play = "run"
 
-	if sprite.animation != anim_to_play:
-		sprite.play(anim_to_play)
+		if sprite.animation != anim_to_play:
+			sprite.play(anim_to_play)
 
 	# Reset jump anim when player starts falling
 	if is_jumping and velocity.y > 0:
@@ -216,11 +218,3 @@ func start_dash():
 	dash_timer = dash_duration
 	
 	ghost_timer = 0
-	
-func spawn_dash_ghost():
-	var ghost = ghost_scene.instantiate()
-	#ghost.texture = sprite.sprite_frames.get_frame(sprite.animation, sprite.frame)
-	ghost.global_position = global_position
-	ghost.scale = sprite.scale
-	ghost.flip_h = sprite.flip_h
-	get_tree().current_scene.add_child(ghost)
