@@ -1,10 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dprlinv8gujgw"]
+[gd_scene load_steps=16 format=3 uid="uid://dprlinv8gujgw"]
 
 [ext_resource type="Texture2D" uid="uid://cgunbnofh4mb4" path="res://respawnpoint/tileset.png" id="1_b3bci"]
 
 [sub_resource type="Gradient" id="Gradient_nv20u"]
 offsets = PackedFloat32Array(0, 0.891473)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3bci"]
+atlas = ExtResource("1_b3bci")
+region = Rect2(128, 160, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3ubr"]
 atlas = ExtResource("1_b3bci")
@@ -40,6 +44,14 @@ region = Rect2(112, 160, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ymmhv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3bci")
+}],
+"loop": true,
+"name": &"deactivated",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s3ubr")
@@ -102,8 +114,8 @@ color_ramp = SubResource("Gradient_nv20u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ymmhv")
-autoplay = "default"
-frame_progress = 0.0996964
+animation = &"deactivated"
+autoplay = "deactivated"
 
 [node name="Light" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
