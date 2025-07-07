@@ -4,6 +4,8 @@ class_name InventorySlot
 
 @export var type: ItemData.Type
 
+signal item_changed(item_data: ItemData)
+
 func init(t: ItemData.Type, cms: Vector2) -> void:
 	type = t
 	custom_minimum_size = cms
@@ -27,3 +29,6 @@ func _drop_data(at_position: Vector2, data: Variant):
 			return
 		item.reparent(data.get_parent())
 	data.reparent(self)
+	
+	if data is InventoryItem and data.data:
+		item_changed.emit(data.data)

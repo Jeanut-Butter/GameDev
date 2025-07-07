@@ -17,7 +17,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Inv" type="GridContainer" parent="Panel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(109, 49)
+custom_minimum_size = Vector2(110, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0166667
@@ -26,7 +26,7 @@ anchor_right = 0.0166667
 anchor_bottom = -0.0181818
 offset_left = 3.0
 offset_top = 3.5
-offset_right = 113.0
+offset_right = 68.0
 offset_bottom = 53.5
 columns = 4
 metadata/_edit_use_anchors_ = true
