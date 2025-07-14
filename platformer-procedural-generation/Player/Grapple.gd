@@ -1,6 +1,7 @@
 extends Node2D
 
 var player
+var has_grappling = false 
 var is_grappling = false
 var grapple_point = Vector2.ZERO
 
@@ -30,8 +31,7 @@ func update(delta):
 	if grapple_cooldown_timer > 0.0:
 		grapple_cooldown_timer -= delta
 
-	if Input.is_action_pressed("grapple") and grapple_cooldown_timer <= 0.0:
-		if not is_grappling:
+	if Input.is_action_pressed("grapple") and grapple_cooldown_timer <= 0.0 and not has_grappling and not is_grappling:
 			shoot_grapple()
 	else:
 		if is_grappling:
@@ -73,7 +73,12 @@ func shoot_grapple():
 			grapple_point = result.position
 			is_grappling = true
 			grapple_time = 0.0
+			
+	await get_tree().create_timer(grapple_duration).timeout
+	is_grappling = false
 
+	await get_tree().create_timer(grapple_cooldown).timeout
+	has_grappling = false  # Unlock after cooldown
 
 func simulate_grapple(delta):
 	var to_grapple = grapple_point - player.global_position

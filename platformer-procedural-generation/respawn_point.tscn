@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dprlinv8gujgw"]
+[gd_scene load_steps=17 format=3 uid="uid://dprlinv8gujgw"]
 
 [ext_resource type="Texture2D" uid="uid://cgunbnofh4mb4" path="res://respawnpoint/tileset.png" id="1_b3bci"]
+[ext_resource type="Script" uid="uid://csl5ijxvotu2x" path="res://respawn_point.gd" id="1_s3ubr"]
 
 [sub_resource type="Gradient" id="Gradient_nv20u"]
 offsets = PackedFloat32Array(0, 0.891473)
@@ -96,6 +97,7 @@ fill_to = Vector2(1, 1)
 size = Vector2(204, 113)
 
 [node name="Respawn point" type="Node2D"]
+script = ExtResource("1_s3ubr")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, 3)
@@ -114,8 +116,8 @@ color_ramp = SubResource("Gradient_nv20u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ymmhv")
-animation = &"deactivated"
 autoplay = "deactivated"
+frame_progress = 0.180962
 
 [node name="Light" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
