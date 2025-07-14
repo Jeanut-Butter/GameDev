@@ -201,7 +201,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Area2D" type="Area2D"]
+gravity_point = true
 script = ExtResource("1_oj5ni")
 bullet_scene = ExtResource("2_is0j1")
 
@@ -210,7 +211,7 @@ position = Vector2(28, 21.9998)
 shape = SubResource("RectangleShape2D_oj5ni")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(31.5, 12.9998)
+position = Vector2(26, 12)
 scale = Vector2(1.98, 1.65333)
 sprite_frames = SubResource("SpriteFrames_0cnjt")
 animation = &"Get hit"
