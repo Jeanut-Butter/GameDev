@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cebjce7q4jgyk" path="res://Undead executioner/Undead executioner puppet/png/skill1.png" id="5_a3vjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmd4t"]
-size = Vector2(76, 98)
+size = Vector2(50, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds5iq"]
 atlas = ExtResource("2_nnkyj")
@@ -470,11 +470,13 @@ animations = [{
 script = ExtResource("1_utych")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(415, 213)
+position = Vector2(428, 214)
+rotation = -0.0165283
 shape = SubResource("RectangleShape2D_pmd4t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(407, 210)
+position = Vector2(429, 209)
 scale = Vector2(1.61, 1.43)
 sprite_frames = SubResource("SpriteFrames_vwj0e")
-animation = &"Idle2"
+animation = &"Attack"
+frame_progress = 0.184801

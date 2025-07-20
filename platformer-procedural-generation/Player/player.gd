@@ -145,6 +145,9 @@ func _physics_process(delta):
 	grapple.update(delta)
 
 	move_and_slide()
+	
+	
+	
 
 func _input(event):
 	if event.is_action_pressed("attack") and not is_attacking:

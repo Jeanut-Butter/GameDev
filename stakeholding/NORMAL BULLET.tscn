@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrn01"]
 size = Vector2(59, 12)
 
-[node name="CollisionShape2D" type="CharacterBody2D"]
+[node name="Area2D" type="Area2D"]
 position = Vector2(21, 5)
 script = ExtResource("1_uotum")
 
