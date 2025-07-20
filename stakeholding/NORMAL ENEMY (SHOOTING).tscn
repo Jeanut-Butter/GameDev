@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://be15n7xxnvvsh" path="res://Monsters_Creatures_Fantasy/Goblin/Death.png" id="4_r8gnu"]
 [ext_resource type="Texture2D" uid="uid://rx352x81mymn" path="res://Monsters_Creatures_Fantasy/Goblin/Take Hit.png" id="5_x53jp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj5ni"]
-size = Vector2(69, 68)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hshhe"]
+radius = 21.0
+height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cnjt"]
 atlas = ExtResource("3_hshhe")
@@ -204,15 +205,14 @@ animations = [{
 [node name="Area2D" type="Area2D"]
 gravity_point = true
 script = ExtResource("1_oj5ni")
+gravity_force = 0.0
 bullet_scene = ExtResource("2_is0j1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(28, 21.9998)
-shape = SubResource("RectangleShape2D_oj5ni")
+position = Vector2(37, 30)
+shape = SubResource("CapsuleShape2D_hshhe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(26, 12)
+position = Vector2(38, 14)
 scale = Vector2(1.98, 1.65333)
 sprite_frames = SubResource("SpriteFrames_0cnjt")
-animation = &"Get hit"
-frame_progress = 0.729325

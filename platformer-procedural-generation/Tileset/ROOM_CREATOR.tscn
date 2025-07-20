@@ -113,7 +113,8 @@ energy = 0.83
 texture = SubResource("GradientTexture2D_amp6q")
 
 [node name="Goblin" parent="." instance=ExtResource("4_i5daf")]
-position = Vector2(1645, -233)
+position = Vector2(1662, -200)
+gravity_force = 0.0
 
 [node name="Node2D" parent="." instance=ExtResource("5_f3x16")]
 position = Vector2(780, -138)
