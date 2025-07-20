@@ -25,7 +25,7 @@ offset_bottom = 102.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" parent="." instance=ExtResource("1_7vw07")]
-position = Vector2(531, 248)
+position = Vector2(545, 159)
 
 [node name="Player" parent="." instance=ExtResource("2_cd2k1")]
 position = Vector2(339, 320)
@@ -34,10 +34,7 @@ position = Vector2(339, 320)
 position = Vector2(515, 352)
 
 [node name="Node2D3" parent="." instance=ExtResource("4_si16d")]
-position = Vector2(778, 339)
+position = Vector2(952, 360)
 
 [node name="Node2D4" parent="." instance=ExtResource("5_sfssh")]
-position = Vector2(175, 315)
-move_speed = 100.0
-patrol_distance = 200.0
-shoot_interval = 2.0
+position = Vector2(132, 349)

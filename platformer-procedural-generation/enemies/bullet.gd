@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed = 800
+@export var speed = 400
 var direction = Vector2.ZERO
 
 func shoot(dir: Vector2):
