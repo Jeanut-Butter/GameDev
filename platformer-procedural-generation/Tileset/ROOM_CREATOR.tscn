@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dgsgnx8gc06ij" path="res://enemies/Goblin(shoot).tscn" id="4_i5daf"]
 [ext_resource type="PackedScene" uid="uid://dxxfgsxk5ppes" path="res://enemies/FLYING (NO SHOOTING).tscn" id="5_f3x16"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3x16"]
+size = Vector2(4679, 128)
+
 [sub_resource type="Gradient" id="Gradient_f3x16"]
 offsets = PackedFloat32Array(0, 0.746154)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -15,9 +18,6 @@ gradient = SubResource("Gradient_f3x16")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3x16"]
-size = Vector2(4679, 128)
 
 [node name="Tutorial level" type="Node2D"]
 
@@ -29,6 +29,14 @@ tile_map_data = PackedByteArray("AAD///f/AgAFAAkAAAAAAPf/AgAAAAkAAAABAPf/AgAAAAk
 
 [node name="Player" parent="." instance=ExtResource("2_ecic7")]
 position = Vector2(-993, -416)
+
+[node name="death zone" type="Area2D" parent="Player"]
+position = Vector2(993, 416)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/death zone"]
+position = Vector2(587, 91)
+shape = SubResource("RectangleShape2D_f3x16")
+debug_color = Color(0.650593, 0.182126, 9.62615e-08, 0.298039)
 
 [node name="Nightime" type="DirectionalLight2D" parent="."]
 blend_mode = 1
@@ -120,9 +128,3 @@ position = Vector2(1645, -233)
 
 [node name="Node2D" parent="." instance=ExtResource("5_f3x16")]
 position = Vector2(780, -138)
-
-[node name="death zone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death zone"]
-position = Vector2(587, 91)
-shape = SubResource("RectangleShape2D_f3x16")
