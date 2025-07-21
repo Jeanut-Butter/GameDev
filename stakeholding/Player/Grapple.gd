@@ -63,9 +63,7 @@ func update(delta):
 			grapple_time = 0.0
 			grapple_cooldown_timer = grapple_cooldown
 
-
 	update_rope()
-
 
 func shoot_grapple():
 	var ray = player.get_node_or_null("Grapple")
@@ -81,8 +79,6 @@ func shoot_grapple():
 			grapple_point = ray.get_collision_point()
 			is_grappling = true
 			grapple_time = 0.0
-
-
 
 func simulate_grapple(delta):
 	var to_grapple = grapple_point - player.global_position
@@ -107,8 +103,6 @@ func simulate_grapple(delta):
 		is_grappling = false
 		post_grapple_velocity = player.velocity
 		momentum_timer = momentum_duration
-
-
 
 func apply_post_grapple_momentum(delta):
 	momentum_timer -= delta

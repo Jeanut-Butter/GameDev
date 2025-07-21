@@ -6,6 +6,10 @@ class_name InventorySlot
 
 signal item_changed(item_data: ItemData)
 
+signal gun
+signal knife
+signal no_weapon
+
 var slot_index := -1
 
 func init(t: ItemData.Type, cms: Vector2, index: int) -> void:
