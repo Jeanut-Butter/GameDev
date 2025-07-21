@@ -83,8 +83,8 @@ func _physics_process(delta):
 		jump_count += 1
 		sprite.play("Jumping")
 #""" MAKE ACTIVE """
-	if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
-		gun.shoot()
+	#if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
+		#gun.shoot()
 	#	print("wouls shoot if i could")
 			
 	if dash_cooldown_timer > 0:

@@ -21,7 +21,7 @@ func _physics_process(delta):
 
 	global_position += velocity * delta  # area2d doesn't have move_and_slide()
 
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play("idle")
 	$AnimatedSprite2D.flip_h = direction < 0
 
 	var distance_from_start = global_position.x - start_position.x

@@ -39,6 +39,7 @@ shape = SubResource("RectangleShape2D_f3x16")
 debug_color = Color(0.650593, 0.182126, 9.62615e-08, 0.298039)
 
 [node name="Nightime" type="DirectionalLight2D" parent="."]
+visible = false
 blend_mode = 1
 
 [node name="Tree_lights" type="Node2D" parent="."]
