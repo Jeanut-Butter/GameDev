@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_iq67o")
-type = 4
+type = 2
 name = "Pistol"
 description = "This is a gun, the gun shoots bullets when left click, yippee"
 texture = ExtResource("2_ss36g")
