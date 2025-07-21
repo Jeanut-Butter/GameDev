@@ -6,9 +6,12 @@ class_name InventorySlot
 
 signal item_changed(item_data: ItemData)
 
-func init(t: ItemData.Type, cms: Vector2) -> void:
+var slot_index := -1
+
+func init(t: ItemData.Type, cms: Vector2, index: int) -> void:
 	type = t
 	custom_minimum_size = cms
+	slot_index = index
 
 func _can_drop_data(at_position: Vector2, data: Variant):
 	if data is InventoryItem:
@@ -32,3 +35,13 @@ func _drop_data(at_position: Vector2, data: Variant):
 	
 	if data is InventoryItem and data.data:
 		item_changed.emit(data.data)
+		if slot_index == 0 and data is InventoryItem and data.data:
+			emit_signal("item_changed")
+			if data.data.type == ItemData.Type.WEAPON:
+				emit_signal("weapon")
+				if data.data.name == "Pistol":
+					emit_signal("gun")
+				if data.data.name == "Knife":
+					emit_signal('knife')
+			else:
+				emit_signal("no_weapon")
