@@ -18,6 +18,7 @@ var is_invincible := false
 # Unlockables
 @export var Pistol := false
 @export var knife := false
+@export var weapon := false
 @export var dash := false
 @export var grapple_abblity := false
 @export var quick_draw := false
@@ -63,6 +64,17 @@ func _ready():
 	add_child(grapple)
 	melee_hitbox.monitoring = false  # Ensure it's off at start
 	
+	# Get the GUI node
+	var gui = $GUI
+
+	# Get slot 0 from the GUI
+	var slot_0 = gui.get_node("%Inv").get_child(0)
+
+	# Connect relevant signals
+	slot_0.connect("gun", Callable(self, "equip_gun"))
+	slot_0.connect("knife", Callable(self, "equip_knife"))
+	slot_0.connect("no_weapon", Callable(self, "unequip_weapon"))
+	
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
 	# Dash
@@ -83,9 +95,9 @@ func _physics_process(delta):
 		jump_count += 1
 		sprite.play("Jumping")
 #""" MAKE ACTIVE """
-	#if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot"):
-		#gun.shoot()
-	#	print("wouls shoot if i could")
+	if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot") and Pistol == true:
+		gun.shoot()
+		print("wouls shoot if i could")
 			
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
@@ -150,7 +162,7 @@ func _physics_process(delta):
 	
 
 func _input(event):
-	if event.is_action_pressed("attack") and not is_attacking:
+	if event.is_action_pressed("attack") and not is_attacking and (Pistol == true or knife == true):
 		start_attack()
 
 func start_attack():
@@ -221,3 +233,26 @@ func start_dash():
 	dash_timer = dash_duration
 	
 	ghost_timer = 0
+
+
+
+func equip_gun():
+	Pistol = true
+	knife = false
+	gun.visible = true
+	melee_hitbox.monitoring = false
+	print("Equipped gun")
+
+func equip_knife():
+	Pistol = false
+	knife = true
+	gun.visible = false
+	melee_hitbox.monitoring = true
+	print("Equipped knife")
+
+func unequip_weapon():
+	Pistol = false
+	knife = false
+	gun.visible = false
+	melee_hitbox.monitoring = false
+	print("No weapon equipped")

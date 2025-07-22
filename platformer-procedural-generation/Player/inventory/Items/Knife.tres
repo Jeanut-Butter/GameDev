@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_jvgig")
-type = 4
+type = 2
 name = "Knife"
 description = "this is a knife, it go stabby stabby when left click pressed"
 texture = ExtResource("1_lhgal")

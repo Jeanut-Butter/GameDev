@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_vhvay")
-type = 5
+type = 1
 name = "Bullet"
 description = "this is a bullet, this is necessary for gun to go pew pew"
