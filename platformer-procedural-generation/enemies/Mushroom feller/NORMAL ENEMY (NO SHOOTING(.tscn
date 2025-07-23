@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://cv2qde16hi6cc"]
+
+[ext_resource type="Script" uid="uid://1l5m17u6d1q1" path="res://NORMAL NO SHOOT.gd" id="1_j0303"]
+[ext_resource type="Texture2D" uid="uid://rkf04dsegyvf" path="res://Monsters_Creatures_Fantasy/Mushroom/Run.png" id="2_j0303"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6yx5"]
+size = Vector2(32.3178, 49.2866)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do5fx"]
+atlas = ExtResource("2_j0303")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfw1v"]
+atlas = ExtResource("2_j0303")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfbvb"]
+atlas = ExtResource("2_j0303")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7x31"]
+atlas = ExtResource("2_j0303")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vpls"]
+atlas = ExtResource("2_j0303")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rydm"]
+atlas = ExtResource("2_j0303")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yxfi"]
+atlas = ExtResource("2_j0303")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df0va"]
+atlas = ExtResource("2_j0303")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uncal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do5fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfw1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfbvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7x31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vpls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rydm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yxfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df0va")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(35, 19)
+scale = Vector2(2.63013, 1.542)
+up_direction = Vector2(0, 1)
+script = ExtResource("1_j0303")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-13.8776, -7.78207)
+shape = SubResource("RectangleShape2D_g6yx5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-13.3073, -16.8612)
+scale = Vector2(1.27463, 1.41078)
+sprite_frames = SubResource("SpriteFrames_uncal")
+frame_progress = 0.529579
