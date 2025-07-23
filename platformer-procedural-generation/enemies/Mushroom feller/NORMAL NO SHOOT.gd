@@ -1,25 +1,25 @@
-extends CharacterBody2D
+extends Area2D
 
 @export var move_speed: float = 100.0
-@export var gravity: float = 800.0
 @export var patrol_distance: float = 200.0
 
-var direction: int = 1 
+var direction: int = 1
 var start_position: Vector2
 
 func _ready():
 	start_position = global_position
-	$AnimatedSprite2D.play("default")  
-	print($AnimatedSprite2D.sprite_frames.get_animation_names())
+	if not $AnimatedSprite2D.is_playing():
+		$AnimatedSprite2D.play("default")
 
-func _physics_process(delta):
-	velocity.y += gravity * delta
-	velocity.x = move_speed * direction
-	move_and_slide()
-
-	$AnimatedSprite2D.play("default")
-	$AnimatedSprite2D.flip_h = direction < 0
+func _process(delta):
+	global_position.x += move_speed * direction * delta
 
 	var distance_from_start = global_position.x - start_position.x
 	if abs(distance_from_start) >= patrol_distance:
 		direction *= -1
+		# Don't teleport! Just reverse direction.
+
+	$AnimatedSprite2D.flip_h = direction < 0
+
+	if !$AnimatedSprite2D.is_playing():
+		$AnimatedSprite2D.play("default")

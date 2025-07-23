@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://cv2qde16hi6cc"]
 
-[ext_resource type="Script" uid="uid://1l5m17u6d1q1" path="res://NORMAL NO SHOOT.gd" id="1_j0303"]
-[ext_resource type="Texture2D" uid="uid://rkf04dsegyvf" path="res://Monsters_Creatures_Fantasy/Mushroom/Run.png" id="2_j0303"]
+[ext_resource type="Script" uid="uid://cnaih7qxynrih" path="res://enemies/Mushroom feller/NORMAL NO SHOOT.gd" id="1_j0303"]
+[ext_resource type="Texture2D" uid="uid://rkf04dsegyvf" path="res://enemies/Mushroom feller/Run.png" id="2_j0303"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6yx5"]
-size = Vector2(32.3178, 49.2866)
+size = Vector2(15.2084, 31.1284)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_do5fx"]
 atlas = ExtResource("2_j0303")
@@ -72,18 +72,17 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2(35, 19)
 scale = Vector2(2.63013, 1.542)
-up_direction = Vector2(0, 1)
 script = ExtResource("1_j0303")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-13.8776, -7.78207)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-15.9688, 0)
 shape = SubResource("RectangleShape2D_g6yx5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(-13.3073, -16.8612)
-scale = Vector2(1.27463, 1.41078)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(-15.5886, -5.18807)
+scale = Vector2(0.700683, 0.869679)
 sprite_frames = SubResource("SpriteFrames_uncal")
 frame_progress = 0.529579
