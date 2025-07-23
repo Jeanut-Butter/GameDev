@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmnkr46s7mgvd"
-path="res://.godot/imported/WildRogue.png-4358f5b5ddfddce8237d3e3ff6aa4c66.ctex"
+uid="uid://b3kbii8ddvsnu"
+path="res://.godot/imported/Attack.png-0622e2837d6ee080a52e17717d6baa77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/WildRogue.png"
-dest_files=["res://.godot/imported/WildRogue.png-4358f5b5ddfddce8237d3e3ff6aa4c66.ctex"]
+source_file="res://enemies/Mushroom feller/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-0622e2837d6ee080a52e17717d6baa77.ctex"]
 
 [params]
 

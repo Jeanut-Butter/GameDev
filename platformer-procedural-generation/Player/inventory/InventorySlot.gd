@@ -6,6 +6,7 @@ class_name InventorySlot
 
 signal item_changed(item_data: ItemData)
 
+signal weapon
 signal gun
 signal knife
 signal no_weapon
