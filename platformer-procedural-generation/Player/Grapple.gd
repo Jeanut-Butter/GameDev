@@ -12,7 +12,7 @@ var momentum_timer := 0.0
 var momentum_duration := 0.2
 var post_grapple_velocity := Vector2.ZERO
 
-var grapple_duration := 0.8
+var grapple_duration := 0.2
 var grapple_time := 0.0                               
 var grapple_cooldown := 2.0
 var grapple_cooldown_timer := 0.0
@@ -28,26 +28,29 @@ func _ready():
 	rope.default_color =  Color(0.545098, 0.270588, 0.0745098, 1)
 
 func update(delta):
+	# Cooldown timer
 	if grapple_cooldown_timer > 0.0:
 		grapple_cooldown_timer -= delta
+		if grapple_cooldown_timer <= 0.0:
+			grapple_cooldown_timer = 0.0
+			has_grappling = false  # Reset it after cooldown finishes
 
-	if Input.is_action_pressed("grapple") and grapple_cooldown_timer <= 0.0 and not has_grappling and not is_grappling:
-			shoot_grapple()
-	else:
-		if is_grappling:
-			post_grapple_velocity = player.velocity
-			momentum_timer = momentum_duration
-		is_grappling = false
+	# Only allow shooting once per press
+	if Input.is_action_just_pressed("grapple") and grapple_cooldown_timer == 0.0 and not has_grappling:
+		shoot_grapple()
 
+	# Grapple in progress
 	if is_grappling:
-		grapple_time += delta 
+		grapple_time += delta
 		simulate_grapple(delta)
 
-		if grapple_time >= grapple_duration:
-			is_grappling = false
-			post_grapple_velocity = player.velocity
-			momentum_timer = momentum_duration
-			grapple_cooldown_timer = grapple_cooldown  
+		var close_enough = player.global_position.distance_to(grapple_point) <= 100.0
+		var too_long = grapple_time >= grapple_duration
+
+		if close_enough or too_long:
+			end_grapple()
+
+	# Momentum effect after grapple
 	elif momentum_timer > 0.0:
 		apply_post_grapple_momentum(delta)
 
@@ -58,12 +61,10 @@ func shoot_grapple():
 	var to_pos = player.get_global_mouse_position()
 
 	var space_state = get_world_2d().direct_space_state
-
 	var query = PhysicsRayQueryParameters2D.create(from_pos, to_pos)
 	query.exclude = [player]
-	query.collision_mask = 0xFFFFFFFF  
-	query.hit_from_inside = true       
-
+	query.collision_mask = 0xFFFFFFFF
+	query.hit_from_inside = true
 
 	var result = space_state.intersect_ray(query)
 
@@ -72,13 +73,8 @@ func shoot_grapple():
 		if collider and (collider.is_in_group("Grapplable") or collider is TileMap):
 			grapple_point = result.position
 			is_grappling = true
+			has_grappling = true
 			grapple_time = 0.0
-			
-	await get_tree().create_timer(grapple_duration).timeout
-	is_grappling = false
-
-	await get_tree().create_timer(grapple_cooldown).timeout
-	has_grappling = false  # Unlock after cooldown
 
 func simulate_grapple(delta):
 	var to_grapple = grapple_point - player.global_position
@@ -111,3 +107,11 @@ func update_rope():
 		rope.add_point(grapple_point - player.global_position)
 	else:
 		rope.clear_points()
+
+func end_grapple():
+	is_grappling = false
+	grapple_time = 0.0
+	momentum_timer = momentum_duration
+	post_grapple_velocity = player.velocity
+	grapple_cooldown_timer = grapple_cooldown
+	# don't reset has_grappling yet — wait for cooldown timer

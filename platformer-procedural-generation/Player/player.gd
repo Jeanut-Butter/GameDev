@@ -102,7 +102,7 @@ func _physics_process(delta):
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
 
-	if Input.is_action_just_pressed("dash") and !is_dashing and dash_cooldown_timer <= 0:
+	if Input.is_action_just_pressed("dash") and !is_dashing and dash_cooldown_timer <= 0 and !is_sliding:
 		start_dash()
 	
 	if is_dashing:
@@ -123,7 +123,8 @@ func _physics_process(delta):
 	
 	if abs(velocity.x) > 0.1 \
 		and Input.is_action_just_pressed("slide") \
-		and can_slide:
+		and can_slide \
+		and !is_dashing:
 
 		can_slide = false  # Lock it BEFORE calling
 		start_slide()
@@ -162,7 +163,7 @@ func _physics_process(delta):
 	
 
 func _input(event):
-	if event.is_action_pressed("attack") and not is_attacking and (Pistol == true or knife == true):
+	if event.is_action_pressed("attack") and not is_attacking and knife == true:
 		start_attack()
 
 func start_attack():
