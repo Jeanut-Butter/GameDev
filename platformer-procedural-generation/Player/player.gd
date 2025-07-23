@@ -9,8 +9,6 @@ var is_jumping := false
 
 @export var gravity := 900
 @export var max_jumps = 2
-@onready var max_health := 5
-var current_health : int = max_health
 var is_invincible := false
 @export var invincibility_time := 0.5
 @onready var melee_hitbox = $MeleeHitbox
@@ -57,7 +55,20 @@ var is_attacking := false
 var attack_step := 1
 @export var attack_damage := 10
 
+
+#Health system
+var max_health := 100
+var current_health := 100
+signal health_changed(new_health)
+signal maxHealth(maxHealth)
+
+
 func _ready():
+	var player = self
+	var health_bar = $InventoryGUI/HealthBar
+	health_bar.setup(player)
+	current_health = max_health
+	emit_signal("maxHealth", max_health)
 	gravity_enabled = true
 	global_position.x = self.position.x
 	print("player is at: ", self.position)
@@ -159,7 +170,8 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	
+	if Input.is_action_just_pressed("dodamage"):
+		take_damage(5)
 	
 
 func _input(event):
@@ -189,6 +201,7 @@ func start_attack():
 func take_damage(amount: int):
 	if is_invincible or is_dash_invincible:
 		return
+	print(current_health)
 	current_health -= amount
 	is_invincible = true
 	sprite.play("fall")
@@ -197,6 +210,8 @@ func take_damage(amount: int):
 	else:
 		await get_tree().create_timer(invincibility_time).timeout
 		is_invincible = false
+	emit_signal("health_changed", current_health)
+	print(current_health)
 
 func die():
 	sprite.play("death")

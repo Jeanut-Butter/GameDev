@@ -1,19 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://be18a2qu2o78l"]
+[gd_scene load_steps=3 format=3 uid="uid://be18a2qu2o78l"]
 
 [ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="1_7x2jj"]
+[ext_resource type="Script" uid="uid://bet2ngh2hr5mp" path="res://Player/inventory/HealthBar.gd" id="2_vyv70"]
 
 [node name="InventoryGUI" type="CanvasLayer"]
 script = ExtResource("1_7x2jj")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.925804, 0.135769, 0, 1)
+self_modulate = Color(1, 0.0784314, 0, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -60.0
+offset_left = -141.0
 offset_top = 5.0
 offset_right = -34.0
 offset_bottom = 32.0
 grow_horizontal = 0
+script = ExtResource("2_vyv70")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0.537255, 1, 1, 1)
