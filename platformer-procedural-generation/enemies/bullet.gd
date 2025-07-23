@@ -5,6 +5,7 @@ var direction = Vector2.ZERO
 
 func shoot(dir: Vector2):
 	direction = dir.normalized()
+	rotation = direction.angle() + PI
 
 func _physics_process(delta):
 	position += direction * speed * delta
