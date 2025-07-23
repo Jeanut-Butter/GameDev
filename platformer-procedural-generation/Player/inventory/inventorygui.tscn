@@ -1,9 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://be18a2qu2o78l"]
 
-[ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="1_urw4p"]
+[ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="1_7x2jj"]
 
-[node name="GUI" type="CanvasLayer"]
-script = ExtResource("1_urw4p")
+[node name="InventoryGUI" type="CanvasLayer"]
+script = ExtResource("1_7x2jj")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 5.0
+offset_right = -34.0
+offset_bottom = 32.0
+grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0.537255, 1, 1, 1)

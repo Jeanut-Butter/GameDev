@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
-[ext_resource type="PackedScene" uid="uid://be18a2qu2o78l" path="res://Player/inventory/gui.tscn" id="2_r8kj4"]
+[ext_resource type="PackedScene" uid="uid://be18a2qu2o78l" path="res://Player/inventory/inventorygui.tscn" id="2_r8kj4"]
 [ext_resource type="PackedScene" uid="uid://dbkal2s4e6pkp" path="res://Weapons/Gun.tscn" id="2_r8wyc"]
 [ext_resource type="Texture2D" uid="uid://bsxemoy1pqsdq" path="res://Player/Adventurer/adventurer-Sheet.png" id="3_ncbhq"]
 [ext_resource type="Texture2D" uid="uid://c3uxgggrjhy6o" path="res://Player/Adventurer/Individual Sprites/adventurer-run-00.png" id="4_r8kj4"]
@@ -437,7 +437,7 @@ radius = 19.2354
 light_mask = 2
 script = ExtResource("1_vhva7")
 
-[node name="GUI" parent="." instance=ExtResource("2_r8kj4")]
+[node name="InventoryGUI" parent="." instance=ExtResource("2_r8kj4")]
 offset = Vector2(30, 0)
 transform = Transform2D(1, 0, 0, 1, 30, 0)
 

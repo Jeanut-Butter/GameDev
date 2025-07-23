@@ -9,8 +9,8 @@ var is_jumping := false
 
 @export var gravity := 900
 @export var max_jumps = 2
-@export var max_health := 5
-var current_health := max_health
+@onready var max_health := 5
+var current_health : int = max_health
 var is_invincible := false
 @export var invincibility_time := 0.5
 @onready var melee_hitbox = $MeleeHitbox
@@ -65,10 +65,10 @@ func _ready():
 	melee_hitbox.monitoring = false  # Ensure it's off at start
 	
 	# Get the GUI node
-	var gui = $GUI
+	var inv = $InventoryGUI
 
 	# Get slot 0 from the GUI
-	var slot_0 = gui.get_node("%Inv").get_child(0)
+	var slot_0 = inv.get_node("%Inv").get_child(0)
 
 	# Connect relevant signals
 	slot_0.connect("gun", Callable(self, "equip_gun"))

@@ -23,6 +23,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("InvToggle"):
 		visibility = !visibility
-		self.visible = !self.visible
-	
-	
+		toggleInv()
+
+func toggleInv():
+	$Panel.visible = !$Panel.visible
+	$Panel/Inv.visible = !$Panel/Inv.visible
