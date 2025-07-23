@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da4hbpbny3du4"
-path="res://.godot/imported/Take Hit.png-3634ecbdcf0ce476e88d567062559f20.ctex"
+path="res://.godot/imported/Take Hit.png-2b03cd497eae4885cf6c43ccb143a04b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Monsters_Creatures_Fantasy/Mushroom/Take Hit.png"
-dest_files=["res://.godot/imported/Take Hit.png-3634ecbdcf0ce476e88d567062559f20.ctex"]
+source_file="res://enemies/Mushroom feller/Take Hit.png"
+dest_files=["res://.godot/imported/Take Hit.png-2b03cd497eae4885cf6c43ccb143a04b.ctex"]
 
 [params]
 
