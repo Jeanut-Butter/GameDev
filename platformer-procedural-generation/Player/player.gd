@@ -65,6 +65,7 @@ signal maxHealth(maxHealth)
 
 func _ready():
 	var player = self
+	$InventoryGUI/HeartBar.setup(player)
 	var health_bar = $InventoryGUI/HealthBar
 	health_bar.setup(player)
 	current_health = max_health

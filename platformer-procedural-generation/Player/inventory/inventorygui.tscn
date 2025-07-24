@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://be18a2qu2o78l"]
+[gd_scene load_steps=4 format=3 uid="uid://be18a2qu2o78l"]
 
 [ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="1_7x2jj"]
+[ext_resource type="PackedScene" uid="uid://mpdo0aer7hhh" path="res://HeartBar.tscn" id="2_2ehta"]
 [ext_resource type="Script" uid="uid://bet2ngh2hr5mp" path="res://Player/inventory/HealthBar.gd" id="2_vyv70"]
 
 [node name="InventoryGUI" type="CanvasLayer"]
 script = ExtResource("1_7x2jj")
+
+[node name="HeartBar" parent="." instance=ExtResource("2_2ehta")]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.925804, 0.135769, 0, 1)
