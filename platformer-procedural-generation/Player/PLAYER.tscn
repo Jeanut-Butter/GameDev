@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dgtfrgeladqet"]
+[gd_scene load_steps=71 format=3 uid="uid://dgtfrgeladqet"]
 
 [ext_resource type="Script" uid="uid://cccqrgmd3x04w" path="res://Player/player.gd" id="1_vhva7"]
 [ext_resource type="Texture2D" uid="uid://bba5fqhh74hu2" path="res://Player/adventurer-Sheet.png" id="2_62xh7"]
@@ -358,7 +358,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sxfbt")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -433,6 +433,32 @@ fill_to = Vector2(1, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_62xh7"]
 radius = 19.2354
 
+[sub_resource type="Gradient" id="Gradient_r8kj4"]
+offsets = PackedFloat32Array(0, 0.694581, 1)
+colors = PackedColorArray(0.278143, 0.452446, 0.972829, 1, 0.626626, 0.716783, 0.985946, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0jsj2"]
+gradient = SubResource("Gradient_r8kj4")
+
+[sub_resource type="Curve" id="Curve_y474v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.325843), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4qo6"]
+curve = SubResource("Curve_y474v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r8kj4"]
+emission_shape_offset = Vector3(0, 3, 0)
+emission_shape_scale = Vector3(3, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector3(0, -10, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_f4qo6")
+color = Color(1, 1, 0.866667, 1)
+color_ramp = SubResource("GradientTexture1D_0jsj2")
+
 [node name="Player" type="CharacterBody2D" groups=["Player or such", "player"]]
 light_mask = 2
 script = ExtResource("1_vhva7")
@@ -443,7 +469,7 @@ transform = Transform2D(1, 0, 0, 1, 30, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
-animation = &"attack_chain_1"
+animation = &"death"
 autoplay = "Jumping"
 speed_scale = 1.6
 
@@ -488,3 +514,10 @@ script = ExtResource("11_ncbhq")
 position = Vector2(10, -2)
 shape = SubResource("CircleShape2D_62xh7")
 debug_color = Color(0.95855, 0.205221, 0, 0.42)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-1, 10)
+amount = 200
+lifetime = 1.5
+randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_r8kj4")
