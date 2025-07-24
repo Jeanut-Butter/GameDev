@@ -57,8 +57,8 @@ var attack_step := 1
 
 
 #Health system
-var max_health := 100
-var current_health := 100
+var max_health := 5
+var current_health := max_health
 signal health_changed(new_health)
 signal maxHealth(maxHealth)
 
@@ -66,8 +66,6 @@ signal maxHealth(maxHealth)
 func _ready():
 	var player = self
 	$InventoryGUI/HeartBar.setup(player)
-	var health_bar = $InventoryGUI/HealthBar
-	health_bar.setup(player)
 	current_health = max_health
 	emit_signal("maxHealth", max_health)
 	gravity_enabled = true
@@ -171,8 +169,11 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("dodamage"):
-		take_damage(5)
+	if Input.is_action_just_pressed("takeDamage"):
+		take_damage(1)
+	
+	if Input.is_action_just_pressed("Heal"):
+		take_damage(-1)
 	
 
 func _input(event):
@@ -206,6 +207,8 @@ func take_damage(amount: int):
 	current_health -= amount
 	is_invincible = true
 	sprite.play("fall")
+	if current_health >= max_health:
+		current_health = max_health
 	if current_health <= 0:
 		die()
 	else:
