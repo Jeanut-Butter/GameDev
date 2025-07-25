@@ -14,7 +14,7 @@ func _ready():
 		var slot := InventorySlot.new()
 		slot.init(ItemData.Type.MAIN, Vector2(117,54), i)  # <-- pass the index!
 		%Inv.add_child(slot)
-	
+	# fish
 	for i in itemsLoad.size():
 		var item := InventoryItem.new()
 		item.init(load(itemsLoad[i]))
