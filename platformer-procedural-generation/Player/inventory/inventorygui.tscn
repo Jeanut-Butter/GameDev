@@ -5,6 +5,8 @@
 
 [node name="InventoryGUI" type="CanvasLayer"]
 script = ExtResource("1_7x2jj")
+invSize = null
+visibility = null
 
 [node name="HeartBar" parent="." instance=ExtResource("2_2ehta")]
 anchors_preset = 2
