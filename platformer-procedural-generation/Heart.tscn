@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8865vvlbrwbu"]
-
-[ext_resource type="Texture2D" uid="uid://de4xmd6kp3t3w" path="res://Player/PurpleHeart.png" id="1_8f18l"]
-
-[node name="Heart" type="TextureRect"]
-offset_bottom = 40.0
-texture = ExtResource("1_8f18l")
-stretch_mode = 5
