@@ -65,24 +65,9 @@ signal maxHealth(maxHealth)
 
 func _ready():
 	var player = self
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#	$InventoryGUI/HeartBar.setup(player)
-=======
-=======
->>>>>>> parent of 77889d6 (added hearts as replacement for bar)
-=======
->>>>>>> parent of 77889d6 (added hearts as replacement for bar)
-=======
->>>>>>> parent of 77889d6 (added hearts as replacement for bar)
-=======
->>>>>>> parent of 77889d6 (added hearts as replacement for bar)
-	var health_bar = $InventoryGUI/HealthBar
-	health_bar.setup(player)
->>>>>>> parent of 77889d6 (added hearts as replacement for bar)
+
+	#var health_bar = $InventoryGUI/HealthBar
+	#health_bar.setup(player)
 	current_health = max_health
 	emit_signal("maxHealth", max_health)
 	gravity_enabled = true
