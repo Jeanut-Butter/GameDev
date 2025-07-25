@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmvficb2wrf8c"]
-
-[ext_resource type="Script" uid="uid://dak7i8jhs5gvb" path="res://Wolrd_gen/seedsaver.gd" id="1_7bshw"]
-
-[node name="seedsaver" type="Node2D"]
-script = ExtResource("1_7bshw")
