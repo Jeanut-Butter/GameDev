@@ -8,7 +8,7 @@ var itemsLoad = [
 	"res://Player/inventory/Items/Bullet.tres"
 ]
 
-
+please be fixed
 func _ready():
 	for i in invSize:
 		var slot := InventorySlot.new()
