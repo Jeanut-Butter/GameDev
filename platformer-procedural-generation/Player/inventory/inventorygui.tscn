@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://be18a2qu2o78l"]
+[gd_scene load_steps=3 format=3 uid="uid://be18a2qu2o78l"]
 
 [ext_resource type="Script" uid="uid://bmwtcfotd4f1i" path="res://gui.gd" id="1_7x2jj"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://wm43a6cpp63f" path="res://HeartBar.tscn" id="2_2ehta"]
-=======
 [ext_resource type="PackedScene" uid="uid://mpdo0aer7hhh" path="res://HeartBar.tscn" id="2_2ehta"]
-[ext_resource type="Script" uid="uid://bet2ngh2hr5mp" path="res://Player/inventory/HealthBar.gd" id="2_vyv70"]
->>>>>>> parent of a090c8a (Player HeartBar done)
 
 [node name="InventoryGUI" type="CanvasLayer"]
 script = ExtResource("1_7x2jj")
@@ -14,27 +9,12 @@ invSize = null
 visibility = null
 
 [node name="HeartBar" parent="." instance=ExtResource("2_2ehta")]
-<<<<<<< HEAD
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -331.0
-offset_right = -291.0
-grow_horizontal = 0
-=======
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-modulate = Color(0.925804, 0.135769, 0, 1)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -141.0
-offset_top = 5.0
-offset_right = -34.0
-offset_bottom = 32.0
-grow_horizontal = 0
-script = ExtResource("2_vyv70")
->>>>>>> parent of a090c8a (Player HeartBar done)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_bottom = 0.0
+grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0.537255, 1, 1, 1)
