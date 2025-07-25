@@ -6,8 +6,11 @@
 [node name="InventoryGUI" type="CanvasLayer"]
 script = ExtResource("1_7x2jj")
 <<<<<<< HEAD
+<<<<<<< HEAD
 invSize = null
 visibility = null
+=======
+>>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 =======
 >>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 

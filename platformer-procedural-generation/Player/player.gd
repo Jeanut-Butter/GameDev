@@ -67,8 +67,11 @@ func _ready():
 	var player = self
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #	$InventoryGUI/HeartBar.setup(player)
 =======
+=======
+>>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 =======
 >>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 	var health_bar = $InventoryGUI/HealthBar
