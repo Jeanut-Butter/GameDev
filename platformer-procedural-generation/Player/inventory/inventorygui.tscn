@@ -22,6 +22,7 @@ visibility = null
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.925804, 0.135769, 0, 1)
+self_modulate = Color(1, 0.0784314, 0, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
