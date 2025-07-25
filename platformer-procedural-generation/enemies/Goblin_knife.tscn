@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmu8r53qgw4fd"]
+
+[ext_resource type="Script" uid="uid://pktk4i6o4hy1" path="res://enemies/bullet.gd" id="1_3cbj3"]
+[ext_resource type="Texture2D" uid="uid://dafk0q37fnevc" path="res://Player/knife.png" id="2_e86wx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cbj3"]
+radius = 2.5
+height = 28.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_3cbj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_e86wx")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3cbj3")
