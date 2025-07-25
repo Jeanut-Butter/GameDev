@@ -65,9 +65,7 @@ signal maxHealth(maxHealth)
 
 func _ready():
 	var player = self
-	$InventoryGUI/HeartBar.setup(player)
-	var health_bar = $InventoryGUI/HealthBar
-	health_bar.setup(player)
+#	$InventoryGUI/HeartBar.setup(player)
 	current_health = max_health
 	emit_signal("maxHealth", max_health)
 	gravity_enabled = true
@@ -80,12 +78,12 @@ func _ready():
 	var inv = $InventoryGUI
 
 	# Get slot 0 from the GUI
-	var slot_0 = inv.get_node("%Inv").get_child(0)
+	#var slot_0 = inv.get_node("%Inv").get_child(0)
 
 	# Connect relevant signals
-	slot_0.connect("gun", Callable(self, "equip_gun"))
-	slot_0.connect("knife", Callable(self, "equip_knife"))
-	slot_0.connect("no_weapon", Callable(self, "unequip_weapon"))
+	#slot_0.connect("gun", Callable(self, "equip_gun"))
+	#slot_0.connect("knife", Callable(self, "equip_knife"))
+	#slot_0.connect("no_weapon", Callable(self, "unequip_weapon"))
 	
 func _physics_process(delta):
 	var local_mouse_pos = get_global_mouse_position()
