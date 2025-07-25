@@ -68,8 +68,11 @@ func _ready():
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #	$InventoryGUI/HeartBar.setup(player)
 =======
+=======
+>>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 =======
 >>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 =======
