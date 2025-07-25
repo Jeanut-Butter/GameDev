@@ -5,8 +5,11 @@
 
 [node name="InventoryGUI" type="CanvasLayer"]
 script = ExtResource("1_7x2jj")
+<<<<<<< HEAD
 invSize = null
 visibility = null
+=======
+>>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.925804, 0.135769, 0, 1)

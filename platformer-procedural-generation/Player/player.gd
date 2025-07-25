@@ -66,8 +66,11 @@ signal maxHealth(maxHealth)
 func _ready():
 	var player = self
 <<<<<<< HEAD
+<<<<<<< HEAD
 #	$InventoryGUI/HeartBar.setup(player)
 =======
+=======
+>>>>>>> parent of 77889d6 (added hearts as replacement for bar)
 	var health_bar = $InventoryGUI/HealthBar
 	health_bar.setup(player)
 >>>>>>> parent of 77889d6 (added hearts as replacement for bar)
