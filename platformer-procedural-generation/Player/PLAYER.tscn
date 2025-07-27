@@ -358,7 +358,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sxfbt")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -443,7 +443,7 @@ transform = Transform2D(1, 0, 0, 1, 30, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
-animation = &"attack_chain_1"
+animation = &"Jumping"
 autoplay = "Jumping"
 speed_scale = 1.6
 
