@@ -103,6 +103,7 @@ func _physics_process(delta):
 		velocity.y = jump_speed
 		is_jumping = true
 		jump_count += 1
+		sprite.stop()
 		sprite.play("Jumping")
 #""" MAKE ACTIVE """
 	if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot") and Pistol == true:
@@ -156,6 +157,7 @@ func _physics_process(delta):
 			anim_to_play = "run"
 
 		if sprite.animation != anim_to_play:
+			sprite.stop()
 			sprite.play(anim_to_play)
 
 	# Reset jump anim when player starts falling
@@ -184,10 +186,13 @@ func start_attack():
 	is_attacking = true
 	attack_step += 1
 	if attack_step == 1:
+		sprite.stop()
 		sprite.play("attack_1")
 	elif attack_step == 3:
+		sprite.stop()
 		sprite.play("attack_2")
 	elif attack_step == 2:
+		sprite.stop()
 		sprite.play("attack_chain_1") 
 	if attack_step == 3:
 		attack_step = 0
@@ -206,6 +211,7 @@ func take_damage(amount: int):
 	print(current_health)
 	current_health -= amount
 	is_invincible = true
+	sprite.stop()
 	sprite.play("fall")
 	if current_health >= max_health:
 		current_health = max_health
@@ -218,6 +224,7 @@ func take_damage(amount: int):
 	print(current_health)
 
 func die():
+	sprite.stop()
 	sprite.play("death")
 	set_physics_process(false)
 	await sprite.animation_finished
@@ -231,6 +238,7 @@ func _on_MeleeHitbox_body_entered(body):
 		body.take_damage(attack_damage)
 
 func start_slide():
+	sprite.stop()
 	is_sliding = true
 	speed = slide_speed
 	sprite.play("Slide")
