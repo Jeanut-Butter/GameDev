@@ -456,6 +456,7 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.333333, 0.333333)
+offset = Vector2(2, 2)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
