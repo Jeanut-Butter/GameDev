@@ -443,7 +443,7 @@ transform = Transform2D(1, 0, 0, 1, 30, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
-animation = &"Jumping"
+animation = &"death"
 autoplay = "Jumping"
 speed_scale = 1.6
 

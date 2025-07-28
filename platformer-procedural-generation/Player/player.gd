@@ -61,6 +61,7 @@ var max_health := 5
 var current_health := max_health
 signal health_changed(new_health)
 signal maxHealth(maxHealth)
+var dead := false
 
 
 func _ready():
@@ -91,6 +92,9 @@ func _physics_process(delta):
 
 	if gravity_enabled:
 		velocity.y += gravity * delta
+		if dead:
+			move_and_slide()
+			return
 		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
 
 	if is_on_floor():
@@ -99,21 +103,12 @@ func _physics_process(delta):
 		is_sliding = false
 		speed = default_speed
 
-	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
-		velocity.y = jump_speed
-		is_jumping = true
-		jump_count += 1
-		sprite.play("Jumping")
-#""" MAKE ACTIVE """
-	if Input.is_action_just_pressed("Shoot") and gun.has_method("shoot") and Pistol == true:
-		gun.shoot()
-		print("wouls shoot if i could")
+	
 			
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
 
-	if Input.is_action_just_pressed("dash") and !is_dashing and dash_cooldown_timer <= 0 and !is_sliding:
-		start_dash()
+	
 	
 	if is_dashing:
 		velocity = dash_direction * dash_speed
@@ -130,18 +125,21 @@ func _physics_process(delta):
 		velocity.x = Input.get_axis("walk_left", "walk_right") * speed * 10
 			
 	# Slide
-	
-	if abs(velocity.x) > 0.1 \
-		and Input.is_action_just_pressed("slide") \
+	if Input.is_action_just_pressed("slide") \
 		and can_slide \
 		and !is_dashing \
-		and !is_attacking:
+		and !is_attacking \
+		and abs(velocity.x) > 0.1:
+
+		can_slide = false
+		start_slide()
 
 		can_slide = false  # Lock it BEFORE calling
 		start_slide()
 	
+	
 	# Animation
-	if not is_attacking:
+	if !is_attacking:
 		var anim_to_play = "Idle"
 
 		if is_sliding:
@@ -167,19 +165,30 @@ func _physics_process(delta):
 	sprite.flip_h = velocity.x < 0
 
 	grapple.update(delta)
-
+	
 	move_and_slide()
 	
+	if Input.is_action_pressed("attack"):
+		if not is_attacking and knife:
+				start_attack()
+
+	if Input.is_action_just_pressed("jump"):
+		if jump_count < max_jumps:
+			velocity.y = jump_speed
+			is_jumping = true
+			jump_count += 1
+			sprite.play("Jumping")  # optional; animation also handled in _physics_process
+	if Input.is_action_just_pressed("Shoot"):
+		if Pistol and gun.has_method("shoot"):
+			gun.shoot()
+	if Input.is_action_just_pressed("dash"):
+		if !is_dashing and dash_cooldown_timer <= 0 and !is_sliding:
+			start_dash()
 	if Input.is_action_just_pressed("takeDamage"):
 		take_damage(1)
-	
 	if Input.is_action_just_pressed("Heal"):
 		take_damage(-1)
-	
 
-func _input(event):
-	if event.is_action_pressed("attack") and not is_attacking and knife == true:
-		start_attack()
 
 func start_attack():
 	is_attacking = true
@@ -207,7 +216,6 @@ func take_damage(amount: int):
 	print(current_health)
 	current_health -= amount
 	is_invincible = true
-	sprite.play("fall")
 	if current_health >= max_health:
 		current_health = max_health
 	if current_health <= 0:
@@ -219,10 +227,16 @@ func take_damage(amount: int):
 	print(current_health)
 
 func die():
+	dead = true
+	is_attacking = false
+	is_sliding = false
+	is_dashing = false
+	can_slide = false
 	sprite.play("death")
-	set_physics_process(false)
-	await sprite.animation_finished
-	queue_free()
+	velocity.x = velocity.x/2
+	await sprite.frame == 5
+	velocity.x = 0
+
 
 func generation_complete(value):
 	gravity_enabled = true
