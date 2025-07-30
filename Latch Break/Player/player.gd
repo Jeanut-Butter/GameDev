@@ -63,7 +63,6 @@ signal health_changed(new_health)
 signal maxHealth(maxHealth)
 var dead := false
 
-
 func _ready():
 	var player = self
 	$InventoryGUI/HeartBar.setup(player)
@@ -173,7 +172,8 @@ func _physics_process(delta):
 				start_attack()
 
 	if Input.is_action_just_pressed("jump"):
-		if jump_count < max_jumps:
+		if jump_count < max_jumps \
+		and !is_attacking:
 			velocity.y = jump_speed
 			is_jumping = true
 			jump_count += 1
