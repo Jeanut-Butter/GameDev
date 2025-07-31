@@ -6,6 +6,7 @@ func shoot(direction: float):
 	rotation = direction
 
 func _ready():
+	add_to_group("player_bullet")
 	connect("area_entered", Callable(self, "_on_area_entered"))
 	await get_tree().create_timer(3.0).timeout
 	queue_free()

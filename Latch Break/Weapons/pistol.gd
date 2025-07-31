@@ -10,7 +10,6 @@ func _process(delta):
 	look_at(mouse_pos)  # points towards mouse cursor 
 	$RotationOffset/Sprite2D.flip_v = global_position.x > get_global_mouse_position().x
 
-
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position

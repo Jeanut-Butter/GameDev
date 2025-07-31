@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://dgsgnx8gc06ij"]
 
 [ext_resource type="Script" uid="uid://dkstcs0exqkx6" path="res://enemies/Goblin.gd" id="1_58ker"]
-[ext_resource type="PackedScene" uid="uid://bmu8r53qgw4fd" path="res://enemies/Goblin_knife.tscn" id="2_e1xuq"]
+[ext_resource type="PackedScene" uid="uid://bmu8r53qgw4fd" path="res://enemies/Goblin_knife.tscn" id="2_58ker"]
 [ext_resource type="Texture2D" uid="uid://b3hpvfa5m6q8u" path="res://enemies/sprite_sheets/golbin/Attack.png" id="3_yccsd"]
 [ext_resource type="Texture2D" uid="uid://cmho5ooopbsv4" path="res://enemies/sprite_sheets/golbin/Take Hit.png" id="4_g2r83"]
 [ext_resource type="Texture2D" uid="uid://doh6foscfmvpe" path="res://enemies/sprite_sheets/golbin/Idle.png" id="5_f0uq8"]
@@ -168,7 +168,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ee6cl")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -185,7 +185,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a6pea")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -238,7 +238,7 @@ animations = [{
 
 [node name="Area2D" type="Area2D" groups=["player"]]
 script = ExtResource("1_58ker")
-bullet_scene = ExtResource("2_e1xuq")
+bullet_scene = ExtResource("2_58ker")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(33, 27)
@@ -248,5 +248,8 @@ shape = SubResource("CapsuleShape2D_biweg")
 position = Vector2(31.5, 12.9998)
 scale = Vector2(1.98, 1.65333)
 sprite_frames = SubResource("SpriteFrames_0cnjt")
-animation = &"move"
+animation = &"death"
 autoplay = "idle"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

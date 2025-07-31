@@ -245,6 +245,7 @@ func _on_MeleeHitbox_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(attack_damage)
 
+
 func start_slide():
 	is_sliding = true
 	speed = slide_speed
