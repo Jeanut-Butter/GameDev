@@ -1,10 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://cv2qde16hi6cc"]
+[gd_scene load_steps=23 format=3 uid="uid://cv2qde16hi6cc"]
 
 [ext_resource type="Script" uid="uid://cnaih7qxynrih" path="res://enemies/Mushroom feller/NORMAL NO SHOOT.gd" id="1_j0303"]
 [ext_resource type="Texture2D" uid="uid://rkf04dsegyvf" path="res://enemies/Mushroom feller/Run.png" id="2_j0303"]
+[ext_resource type="Texture2D" uid="uid://oj4ey623eauc" path="res://enemies/Mushroom feller/Death.png" id="2_ko2t7"]
+[ext_resource type="Texture2D" uid="uid://da4hbpbny3du4" path="res://enemies/Mushroom feller/Take Hit.png" id="4_unss2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6yx5"]
 size = Vector2(15.2084, 31.1284)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7yuq"]
+atlas = ExtResource("2_ko2t7")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crrtn"]
+atlas = ExtResource("2_ko2t7")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdbmx"]
+atlas = ExtResource("2_ko2t7")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gux5m"]
+atlas = ExtResource("2_ko2t7")
+region = Rect2(450, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_do5fx"]
 atlas = ExtResource("2_j0303")
@@ -38,8 +56,41 @@ region = Rect2(900, 0, 150, 150)
 atlas = ExtResource("2_j0303")
 region = Rect2(1050, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqery"]
+atlas = ExtResource("4_unss2")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2tfc"]
+atlas = ExtResource("4_unss2")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnjku"]
+atlas = ExtResource("4_unss2")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2ibq"]
+atlas = ExtResource("4_unss2")
+region = Rect2(450, 0, 150, 150)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_uncal"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7yuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crrtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdbmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gux5m")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_do5fx")
@@ -68,6 +119,23 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqery")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2tfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnjku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ibq")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -85,4 +153,6 @@ shape = SubResource("RectangleShape2D_g6yx5")
 position = Vector2(-15.5886, -5.18807)
 scale = Vector2(0.700683, 0.869679)
 sprite_frames = SubResource("SpriteFrames_uncal")
-frame_progress = 0.529579
+animation = &"hurt"
+frame = 3
+frame_progress = 1.0

@@ -17,3 +17,6 @@ func _physics_process(delta):
 func _on_area_entered(area):
 	if area.is_in_group("walls"):
 		queue_free()
+	if area.has_method("take_damage"):
+		area.take_damage(1)
+		queue_free()
