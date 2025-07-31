@@ -199,6 +199,7 @@ func _physics_process(delta):
 
 func start_attack():
 	is_attacking = true
+	$MeleeHitbox.enable
 	attack_step += 1
 	if attack_step == 1:
 		sprite.play("attack_1")
@@ -215,6 +216,7 @@ func start_attack():
 
 	await get_tree().create_timer(0.2).timeout
 	is_attacking = false
+	$MeleeHitbox.enable
 	#print(attack_step)
 
 func take_damage(amount: int):
