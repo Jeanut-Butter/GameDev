@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cirp0ognt0d8x"]
+[gd_scene load_steps=12 format=4 uid="uid://cirp0ognt0d8x"]
 
 [ext_resource type="PackedScene" uid="uid://bwihkl3ak0mbl" path="res://Tileset/tilemap.tscn" id="2_amp6q"]
 [ext_resource type="PackedScene" uid="uid://dgtfrgeladqet" path="res://Player/PLAYER.tscn" id="2_ecic7"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dgsgnx8gc06ij" path="res://enemies/Goblin(shoot).tscn" id="4_i5daf"]
 [ext_resource type="PackedScene" uid="uid://dxxfgsxk5ppes" path="res://enemies/FLYING (NO SHOOTING).tscn" id="5_f3x16"]
 [ext_resource type="PackedScene" uid="uid://cv2qde16hi6cc" path="res://enemies/Mushroom feller/NORMAL ENEMY (NO SHOOTING(.tscn" id="6_cpdwh"]
+[ext_resource type="PackedScene" uid="uid://c7kdye5vf77v4" path="res://Player/inventory/Items/FloorItem.tscn" id="7_xinrm"]
+[ext_resource type="Resource" uid="uid://c8ga1io7j1fsj" path="res://Player/inventory/Items/Pistol.tres" id="8_owfqs"]
 
 [sub_resource type="Gradient" id="Gradient_f3x16"]
 offsets = PackedFloat32Array(0, 0.746154)
@@ -133,3 +135,7 @@ debug_color = Color(0.650593, 0.182126, 9.62615e-08, 0.298039)
 
 [node name="Node2D2" parent="." instance=ExtResource("6_cpdwh")]
 position = Vector2(2225, -190)
+
+[node name="FloorItem" parent="." instance=ExtResource("7_xinrm")]
+position = Vector2(-719, -415)
+item_data = ExtResource("8_owfqs")

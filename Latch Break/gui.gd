@@ -28,3 +28,12 @@ func _process(delta):
 func toggleInv():
 	$Panel.visible = !$Panel.visible
 	$Panel/Inv.visible = !$Panel/Inv.visible
+
+func add_item_to_inventory(item_data: ItemData) -> bool:
+	for slot in %Inv.get_children():
+		if slot.get_child_count() == 0:
+			var item := InventoryItem.new()
+			item.init(item_data)
+			slot.add_child(item)
+			return true
+	return false # inventory full

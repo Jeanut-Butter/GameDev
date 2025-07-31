@@ -291,3 +291,12 @@ func unequip_weapon():
 	gun.visible = false
 	melee_hitbox.monitoring = false
 	print("No weapon equipped")
+
+func pick_up(item_data: ItemData) -> void:
+	var inventory_gui := $InventoryGUI
+	var added = inventory_gui.add_item_to_inventory(item_data)
+
+	if added:
+		print("Picked up item:", item_data.name)
+	else:
+		print("Inventory full. Couldn't pick up:", item_data.name)
