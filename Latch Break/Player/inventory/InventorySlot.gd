@@ -13,6 +13,9 @@ signal no_weapon
 
 var slot_index := -1
 
+func _ready():
+	emit_signal("item_changed")
+
 func init(t: ItemData.Type, cms: Vector2, index: int) -> void:
 	type = t
 	custom_minimum_size = cms

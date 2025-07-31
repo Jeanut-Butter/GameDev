@@ -55,6 +55,9 @@ var is_attacking := false
 var attack_step := 1
 @export var attack_damage := 10
 
+#bullet label
+@onready var AmmoCount = $InventoryGUI/AmmoCount
+
 
 #Health system
 var max_health := 5
@@ -63,8 +66,8 @@ signal health_changed(new_health)
 signal maxHealth(maxHealth)
 var dead := false
 
-
 func _ready():
+	AmmoCount.text = str(gun.MagAmmo) + "/" + str(gun.TotalAmmo)
 	var player = self
 	$InventoryGUI/HeartBar.setup(player)
 	current_health = max_health
@@ -173,7 +176,8 @@ func _physics_process(delta):
 				start_attack()
 
 	if Input.is_action_just_pressed("jump"):
-		if jump_count < max_jumps:
+		if jump_count < max_jumps \
+		and !is_attacking:
 			velocity.y = jump_speed
 			is_jumping = true
 			jump_count += 1
@@ -181,6 +185,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Shoot"):
 		if Pistol and gun.has_method("shoot"):
 			gun.shoot()
+			if gun.reloading:
+				await get_tree().create_timer(1).timeout
+			AmmoCount.text = str(gun.MagAmmo) + "/" + str(gun.TotalAmmo)
 	if Input.is_action_just_pressed("dash"):
 		if !is_dashing and dash_cooldown_timer <= 0 and !is_sliding:
 			start_dash()
@@ -292,3 +299,12 @@ func unequip_weapon():
 	gun.visible = false
 	melee_hitbox.monitoring = false
 	print("No weapon equipped")
+
+func pick_up(item_data: ItemData) -> void:
+	var inventory_gui := $InventoryGUI
+	var added = inventory_gui.add_item_to_inventory(item_data)
+
+	if added:
+		print("Picked up item:", item_data.name)
+	else:
+		print("Inventory full. Couldn't pick up:", item_data.name)

@@ -13,7 +13,7 @@ config_version=5
 config/name="Latch Break"
 run/main_scene="uid://cirp0ognt0d8x"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cpf11g4cu04qf"
 
 [autoload]
 

@@ -440,6 +440,8 @@ script = ExtResource("1_vhva7")
 [node name="InventoryGUI" parent="." instance=ExtResource("2_r8kj4")]
 offset = Vector2(30, 0)
 transform = Transform2D(1, 0, 0, 1, 30, 0)
+invSize = 16
+visibility = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a5owu")
