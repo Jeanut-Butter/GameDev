@@ -3,11 +3,7 @@ extends CanvasLayer
 @export var invSize = 16
 @export var visibility := true
 var itemsLoad = [
-	"res://Player/inventory/Items/Pistol.tres",
-	"res://Player/inventory/Items/Knife.tres",
-	"res://Player/inventory/Items/Bullet.tres"
 ]
-
 
 func _ready():
 	for i in invSize:

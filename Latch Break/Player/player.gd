@@ -55,6 +55,9 @@ var is_attacking := false
 var attack_step := 1
 @export var attack_damage := 10
 
+#bullet label
+@onready var AmmoCount = $InventoryGUI/AmmoCount
+
 
 #Health system
 var max_health := 5
@@ -64,6 +67,7 @@ signal maxHealth(maxHealth)
 var dead := false
 
 func _ready():
+	AmmoCount.text = str(gun.MagAmmo) + "/" + str(gun.TotalAmmo)
 	var player = self
 	$InventoryGUI/HeartBar.setup(player)
 	current_health = max_health
@@ -181,6 +185,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Shoot"):
 		if Pistol and gun.has_method("shoot"):
 			gun.shoot()
+			if gun.reloading:
+				await get_tree().create_timer(1).timeout
+			AmmoCount.text = str(gun.MagAmmo) + "/" + str(gun.TotalAmmo)
 	if Input.is_action_just_pressed("dash"):
 		if !is_dashing and dash_cooldown_timer <= 0 and !is_sliding:
 			start_dash()
