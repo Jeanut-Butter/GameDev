@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d17phgn8xprn"]
 
 [ext_resource type="Texture2D" uid="uid://rj75ic6km350" path="res://Screenshot 2025-08-01 122411.png" id="1_fnlyl"]
-[ext_resource type="Script" path="res://title_screen.gd" id="1_pkhjh"]
+[ext_resource type="Script" uid="uid://baw7qxsexw71r" path="res://title_screen.gd" id="1_pkhjh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -77,6 +77,15 @@ text = "Tutorial"
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Quit"
+
+[node name="Label2" type="Label" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -17.0
+offset_top = -28.0
+offset_right = 140.0
+offset_bottom = -5.0
+text = "May need to restart "
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]

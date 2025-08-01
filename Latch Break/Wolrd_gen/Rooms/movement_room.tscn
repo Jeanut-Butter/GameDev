@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=4 uid="uid://0jkoxetbog02"]
+[gd_scene load_steps=3 format=4 uid="uid://0jkoxetbog02"]
 
 [ext_resource type="TileSet" uid="uid://ddjq2nhx17qfr" path="res://Tileset/TILESET_MASTER.tres" id="1_rr48m"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3daxw"]
 
 [node name="MovemnetRoom" type="Node2D"]
 
@@ -11,3 +13,10 @@ tile_set = ExtResource("1_rr48m")
 [node name="Door_Right" type="Marker2D" parent="."]
 
 [node name="Door_Left" type="Marker2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.0431373)
+custom_minimum_size = Vector2(512, 288)
+offset_right = 512.0
+offset_bottom = 288.0
+texture = SubResource("PlaceholderTexture2D_3daxw")
