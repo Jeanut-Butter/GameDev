@@ -66,6 +66,8 @@ signal health_changed(new_health)
 signal maxHealth(maxHealth)
 var dead := false
 
+signal ItemPickedUp()
+
 func _ready():
 	AmmoCount.text = str(gun.MagAmmo) + "/" + str(gun.TotalAmmo)
 	var player = self
@@ -308,5 +310,6 @@ func pick_up(item_data: ItemData) -> void:
 
 	if added:
 		print("Picked up item:", item_data.name)
+		emit_signal("ItemPickedUp")
 	else:
 		print("Inventory full. Couldn't pick up:", item_data.name)

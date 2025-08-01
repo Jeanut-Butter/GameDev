@@ -57,3 +57,19 @@ func _drop_data(at_position: Vector2, data: Variant):
 			else:
 				emit_signal("no_weapon")
 				print("no weapon")
+
+func ItemPickedUp(data: Variant):
+	if slot_index == 0 and data is InventoryItem and data.data:
+			emit_signal("item_changed")
+			if data.data.type == ItemData.Type.WEAPON:
+				emit_signal("weapon")
+				print("weapon")
+				if data.data.name == "Pistol":
+					emit_signal("gun")
+					print("gun")
+				if data.data.name == "Knife":
+					emit_signal('knife')
+					print("knife")
+			else:
+				emit_signal("no_weapon")
+				print("no weapon")
