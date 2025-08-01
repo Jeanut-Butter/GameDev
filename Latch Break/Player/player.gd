@@ -11,7 +11,9 @@ var is_jumping := false
 @export var max_jumps = 2
 var is_invincible := false
 @export var invincibility_time := 0.5
-@onready var melee_hitbox = $MeleeHitbox
+@onready var melee_hitbox: Area2D = $MeleeHitbox
+@onready var melee_hitbox_shape: CollisionShape2D = $MeleeHitbox/MeleeHitboxShape
+
 
 # Unlockables
 @export var Pistol := false
@@ -69,6 +71,13 @@ var dead := false
 signal ItemPickedUp()
 
 func _ready():
+	if !melee_hitbox:
+		push_error("melee_hitbox is null!")
+	if !melee_hitbox_shape:
+		push_error("melee_hitbox_shape is null!")
+
+	melee_hitbox.monitoring = false
+	melee_hitbox_shape.disabled = true
 	AmmoCount.text = str(gun.MagAmmo) + "/" + str(gun.TotalAmmo)
 	var player = self
 	$InventoryGUI/HeartBar.setup(player)
@@ -200,26 +209,35 @@ func _physics_process(delta):
 
 
 func start_attack():
+	if dead:
+		return
+	
 	is_attacking = true
-	$MeleeHitbox/MeleeHitbox.disabled = false
 	attack_step += 1
+	
+	# Play attack animation
 	if attack_step == 1:
 		sprite.play("attack_1")
+	elif attack_step == 2:
+		sprite.play("attack_chain_1")
 	elif attack_step == 3:
 		sprite.play("attack_2")
-	elif attack_step == 2:
-		sprite.play("attack_chain_1") 
-	if attack_step == 3:
 		attack_step = 0
-	#hixbo
+	
+	# Activate hitbox
 	melee_hitbox.monitoring = true
+	melee_hitbox_shape.disabled = false
+
 	await sprite.animation_finished
+
+	# Deactivate hitbox
+	melee_hitbox_shape.disabled = true
 	melee_hitbox.monitoring = false
 
 	await get_tree().create_timer(0.2).timeout
 	is_attacking = false
-	$MeleeHitbox/MeleeHitbox.disabled = true
-	#print(attack_step)
+
+
 
 func take_damage(amount: int):
 	if is_invincible or is_dash_invincible:

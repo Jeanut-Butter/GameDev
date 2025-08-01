@@ -87,3 +87,6 @@ func _on_area_entered(area):
 	if area.is_in_group("player_bullet"):
 		take_damage(1)
 		area.queue_free()
+	
+	if area.is_in_group("player_melee"):
+		take_damage(1)

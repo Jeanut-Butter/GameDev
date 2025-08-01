@@ -35,6 +35,7 @@ enabled=PackedStringArray()
 walls=""
 player="Joel_Connor_Smith"
 Grapplable="can be grappled on"
+player_melee=""
 
 [input]
 
