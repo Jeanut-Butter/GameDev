@@ -11,6 +11,7 @@ var is_dead := false
 var is_hurt := false
 
 func _ready():
+	connect("body_entered", Callable(self, "_on_body_entered"))
 	start_position = global_position
 	$AnimatedSprite2D.play("default")
 
@@ -48,3 +49,9 @@ func die():
 	$AnimatedSprite2D.play("death")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
+	
+func _on_body_entered(body):
+	if is_dead:
+		return
+	if body.is_in_group("player") and body.has_method("take_damage"):
+		body.take_damage(1)
