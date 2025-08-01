@@ -31,5 +31,9 @@ func add_item_to_inventory(item_data: ItemData) -> bool:
 			var item := InventoryItem.new()
 			item.init(item_data)
 			slot.add_child(item)
+			
+			if slot.slot_index == 0:
+				slot.ItemPickedUp(item)
+			
 			return true
 	return false # inventory full
